@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 const { toJSON, paginate } = require('./plugins');
 
-const sectionsSchema = 
+
+const destinationsSchema = 
     {
         title: {
           type: String,
@@ -12,33 +13,36 @@ const sectionsSchema =
             required: true,
         },
         image: {
-        type: String,
-        percentage:Number,
-        required: true,
+            type: String,
+            required: true,
         },
+        percentage:{
+            type:Number
+        }
+        
     };
 
 
 
-const sectionSchema = mongoose.Schema(
+const destinationSchema = mongoose.Schema(
   {
-    background: {
+    title: {
       type: String,
       required: false,
     },
-    title:{
+    image:{
+        type:String,
+        required:false
+    },
+    slides:{
       type:String,
       required:true  
     },
     sections:{
-        type:[sectionsSchema],
+        type:[destinationsSchema],
         required:false  
     },
-    description1:{
-        type:String,
-        required:false  
-    },
-    description2:{
+    description:{
         type:String,
         required:false  
     },
@@ -53,8 +57,8 @@ const sectionSchema = mongoose.Schema(
   }
 );
 
-sectionSchema.plugin(toJSON);
-sectionSchema.plugin(paginate);
+destinationSchema.plugin(toJSON);
+destinationSchema.plugin(paginate);
 
 
 
@@ -62,6 +66,6 @@ sectionSchema.plugin(paginate);
 /**
  * @typedef Section
  */
-const Section = mongoose.model('Sections', sectionSchema);
+const Destination = mongoose.model('Destinations', destinationSchema);
 
-module.exports = Section;
+module.exports = Destination;
