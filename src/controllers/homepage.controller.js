@@ -25,6 +25,8 @@ const createHomePageSection = catchAsync(async (req, res) => {
     res.status(httpStatus.CREATED).send(homepage);
   });
 
+
+
 const updateHomePageSection = catchAsync(async (req, res) => {
   const homepage = await homePageService.updateHomePageSection(req);
   res.status(httpStatus.CREATED).send(homepage);
@@ -36,5 +38,6 @@ module.exports = {
   getHomePageSection,
   createHomePageSection,
   updateHomePageSection
+  
   };
   

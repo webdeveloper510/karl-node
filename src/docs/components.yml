@@ -45,6 +45,22 @@ components:
         description1: Save up to £750 per person on selected holidays to Greece, Spain, Portugal & Italy
         description2: Great deals, with a price match promise & deposits from £30, say hello to holidays that make you smile
         sections: [{title,description,image,percentage}]
+    PageMeta:
+      type: object
+      properties:
+        id:
+          type: string
+        metatitle:
+          type: string
+        metadescription:
+          type: string
+        canonical:
+          type: string
+      example:
+        id: 5ebac534954b54139806c113
+        metatitle: title
+        metadescription: description
+        canonical: https://picsum.photos/id/1015/1000/400/
     Destination:
       type: object
       properties:

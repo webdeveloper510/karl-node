@@ -22,16 +22,7 @@ const sectionsSchema =
 
 const homePageSchema = mongoose.Schema(
   {
-    metatitle:{
-      type:String
-    },
-    metadescription:{
-      type:String
-    },
-    canonical:{
-      type:String
-    },
-    background: {
+   background: {
       type: String,
       required: false,
     },

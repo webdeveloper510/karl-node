@@ -4,6 +4,7 @@ const userRoute = require('./user.route');
 const docsRoute = require('./docs.route');
 const homepageRoute = require('./homepage.route');
 const destinationRoute = require('./destination.route');
+const pageMetaRoute = require('./pagemeta.route');
 const config = require('../../config/config');
 
 const router = express.Router();
@@ -24,6 +25,10 @@ const defaultRoutes = [
   {
     path: '/destination',
     route: destinationRoute,
+  },
+  {
+    path: '/pagemeta',
+    route: pageMetaRoute,
   },
 ];
 

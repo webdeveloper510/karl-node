@@ -1,5 +1,5 @@
 const httpStatus = require('http-status');
-const { HomePage } = require('../models');
+const { HomePage,PageMeta } = require('../models');
 const ApiError = require('../utils/ApiError');
 
 /**
@@ -32,6 +32,19 @@ const createHomePageSection = async (homePageSectionBody) => {
     //   throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
     // }
     return HomePage.create(homePageSectionBody);
+  };
+
+
+  /**
+ * Create  HomePage
+ * @param {Object} PageMetaBody
+ * @returns {Promise<PageMeta>}
+ */
+   const createPageMeta = async (PageMetaBody) => {
+    // if (await User.isEmailTaken(userBody.email)) {
+    //   throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
+    // }
+    return PageMeta.create(PageMetaBody);
   };
 
 

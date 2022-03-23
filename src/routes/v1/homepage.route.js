@@ -23,7 +23,6 @@ router
 .post(homepageController.createHomePageSection);
 
 
-
 router
   .route('/updateSection')
 .post(homepageController.updateHomePageSection);
@@ -49,10 +48,6 @@ module.exports = router;
  *             required:
  *               - title
  *             properties:
- *               metatitle:
- *                 type: string
- *               metadescription:
- *                 type: string
  *               background:
  *                 type: string
  *               title:
@@ -68,9 +63,6 @@ module.exports = router;
  *             example:
  *               background: fake name
  *               title: Hello Holidays
- *               metatitle: ghj
- *               metadescription: hjk
- *               canonical: Here
  *               type: section1
  *               description1: Save up to £750 per person on selected holidays to Greece, Spain, Portugal & Italy
  *               description2: Great deals, with a price match promise & deposits from £30, say hello to holidays that make you smile
@@ -107,10 +99,6 @@ module.exports = router;
  *             properties:
  *               id:
  *                 type: string
- *               metatitle:
- *                 type: string
- *               metadescription:
- *                 type: string
  *               background:
  *                 type: string
  *               title:
@@ -127,9 +115,6 @@ module.exports = router;
  *               id: 34534534634634
  *               background: fake name
  *               title: Hello Holidays
- *               metatitle: ghj
- *               metadescription: hjk
- *               canonical: Here
  *               type: section1
  *               description1: Save up to £750 per person on selected holidays to Greece, Spain, Portugal & Italy
  *               description2: Great deals, with a price match promise & deposits from £30, say hello to holidays that make you smile
