@@ -7,8 +7,8 @@ const ApiError = require('../utils/ApiError');
  * @param {{string}} type
  * @returns {Promise<HomePage>}
  */
- const getHomePageSectionById = async (req) => {
-    return HomePage.findById(req.params.id);
+ const getHomePageSectionById = async (id) => {
+    return HomePage.findById(id);
   };
 
 

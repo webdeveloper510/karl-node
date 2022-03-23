@@ -5,7 +5,7 @@ const catchAsync = require('../utils/catchAsync');
 const { homePageService } = require('../services');
 
 const getHomePageSection = catchAsync(async (req, res) => {
-    const homepage = await homePageService.getHomePageSectionById(req);
+    const homepage = await homePageService.getHomePageSectionById(req.params.id);
     if (!homepage) {
       throw new ApiError(httpStatus.NOT_FOUND, 'HomePage data not found');
     }
