@@ -34,19 +34,21 @@ const createDestination = async (destinationBody) => {
     return Destination.create(destinationBody);
   };
 
-/**
- * Update  Destination
- * @param {Object} destinationBody
+  /**
+ * Update Home Page Section
  * @returns {Promise<Destination>}
  */
-  const updateDestination = async (req) => {
-  // if (await User.isEmailTaken(userBody.email)) {
-  //   throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
-  // }
-  let body = req.body
-  delete body["id"]
-  return Destination.updateOne({_id:req.body.id},body);
-};
+   const updateDestination = async (req) => {
+    const destination = await getDestinationById(req.body.id);
+    if (!destination) {
+      throw new ApiError(httpStatus.NOT_FOUND, 'Data not found');
+    }
+    let body = req.body
+    delete body['id']
+    Object.assign(section, body);
+    await destination.save();
+    return destination;
+  };
 
 
 
