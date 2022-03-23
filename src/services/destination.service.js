@@ -13,6 +13,16 @@ const ApiError = require('../utils/ApiError');
 
 
   /**
+ * Query for users
+ * @returns {Promise<HomePage>}
+ */
+ const getDestinationList = async (filter, options) => {
+  const destinations = await Destination.find();
+  return destinations;
+};
+
+
+  /**
  * Create  Section1
  * @param {Object} destinationBody
  * @returns {Promise<Destination>}
@@ -41,6 +51,7 @@ const createDestination = async (destinationBody) => {
 
 
   module.exports = {
+    getDestinationList,
     getDestinationById,
     createDestination,
     updateDestination

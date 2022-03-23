@@ -4,6 +4,14 @@ const ApiError = require('../utils/ApiError');
 const catchAsync = require('../utils/catchAsync');
 const { homePageService } = require('../services');
 
+
+
+const listHomePageSections = catchAsync(async (req, res) => {
+  const homepageSections = await homePageService.listHomePageSections();
+  res.status(httpStatus.CREATED).send(homepageSections);
+});
+
+
 const getHomePageSection = catchAsync(async (req, res) => {
     const homepage = await homePageService.getHomePageSectionById(req.params.id);
     if (!homepage) {
@@ -24,6 +32,7 @@ const updateHomePageSection = catchAsync(async (req, res) => {
 
 
 module.exports = {
+  listHomePageSections,
   getHomePageSection,
   createHomePageSection,
   updateHomePageSection

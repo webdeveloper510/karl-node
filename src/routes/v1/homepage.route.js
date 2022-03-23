@@ -8,6 +8,11 @@ const router = express.Router();
 
 
 router
+  .route('/sections')
+.get(homepageController.listHomePageSections);
+
+
+router
   .route('/section/:id')
 .get(homepageController.getHomePageSection);
 // router.get('/section2', homepageController.getSection2);
@@ -156,6 +161,31 @@ module.exports = router;
  *         schema:
  *           type: string
  *         description:  id of section on homepage
+ *     responses:
+ *       "200":
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *                $ref: '#/components/schemas/HomePage'
+ *       "403":
+ *         $ref: '#/components/responses/Forbidden'
+ *       "404":
+ *         $ref: '#/components/responses/NotFound'
+ * 
+ */
+
+
+
+/**
+ * @swagger
+ * /homepage/sections:
+ *   get:
+ *     summary: Get All Home Page Sections
+ *     description: Get all the home Page sections
+ *     tags: [Sections]
+ *     security:
+ *       - bearerAuth: []
  *     responses:
  *       "200":
  *         description: OK

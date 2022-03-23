@@ -11,6 +11,16 @@ const ApiError = require('../utils/ApiError');
     return HomePage.findById(id);
   };
 
+/**
+ * Query for users
+ * @returns {Promise<HomePage>}
+ */
+ const listHomePageSections = async (filter, options) => {
+  const sections = await HomePage.find();
+  return sections;
+};
+
+
 
   /**
  * Create  HomePage
@@ -45,6 +55,7 @@ const updateHomePageSection = async (req) => {
 
 
   module.exports = {
+    listHomePageSections,
     getHomePageSectionById,
     createHomePageSection,
     updateHomePageSection

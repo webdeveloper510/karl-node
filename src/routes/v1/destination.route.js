@@ -7,6 +7,12 @@ const auth = require('../../middlewares/auth');
 const router = express.Router();
 
 
+
+router
+  .route('/list')
+.get(destinationController.getDestinationList);
+
+
 router
   .route('/:id')
 .get(destinationController.getDestination);
@@ -42,9 +48,12 @@ module.exports = router;
  *             required:
  *               - title
  *             properties:
- *               metatitle: ghj
- *               metadescription: hjk
- *               canonical: Here
+ *               metatitle: 
+ *                 type: string
+ *               metadescription:
+ *                 type: string
+ *               canonical: 
+ *                 type: string
  *               title:
  *                 type: string
  *               slides:
@@ -55,6 +64,9 @@ module.exports = router;
  *                 type: array
  *             example:
  *               slides: ['https://picsum.photos/id/1015/1000/400/']
+ *               metattitle: testing
+ *               metadescription: testing desc
+ *               canonical: url
  *               title: Ibiza
  *               type: testing
  *               sections: [{title,description,image,percentage,type}]
@@ -138,6 +150,30 @@ module.exports = router;
  *         schema:
  *           id: string
  *         description: Type
+ *     responses:
+ *       "200":
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *                $ref: '#/components/schemas/Destination'
+ *       "403":
+ *         $ref: '#/components/responses/Forbidden'
+ *       "404":
+ *         $ref: '#/components/responses/NotFound'
+ * 
+ */
+
+
+/**
+ * @swagger
+ * /destination/list:
+ *   get:
+ *     summary: Get All destinations
+ *     description: Get list of all the destinations
+ *     tags: [Destinations]
+ *     security:
+ *       - bearerAuth: []
  *     responses:
  *       "200":
  *         description: OK
