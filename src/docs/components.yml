@@ -18,9 +18,13 @@ components:
         email: fake@example.com
         name: fake name
         role: user
-    Section:
+    HomePage:
       type: object
       properties:
+        metatitle:
+          type: string
+        metadescription:
+          type: string
         id:
           type: string
         type:
@@ -36,11 +40,27 @@ components:
           type: array
       example:
         id: 5ebac534954b54139806c112
-        type: section1
+        type: homepage
         title: Hello Holidays
         description1: Save up to £750 per person on selected holidays to Greece, Spain, Portugal & Italy
         description2: Great deals, with a price match promise & deposits from £30, say hello to holidays that make you smile
         sections: [{title,description,image,percentage}]
+    Destination:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        sections:
+          type: array
+        slides:
+          type: array
+      example:
+        id: 5ebac534954b54139806c113
+        title: Destination1
+        slides: [{title,description,image,percentage,type}]
+        sections: [https://picsum.photos/id/1015/1000/400/]
     Token:
       type: object
       properties:

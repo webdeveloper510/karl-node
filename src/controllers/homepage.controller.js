@@ -4,22 +4,28 @@ const ApiError = require('../utils/ApiError');
 const catchAsync = require('../utils/catchAsync');
 const { homePageService } = require('../services');
 
-const getSection = catchAsync(async (req, res) => {
-    const section1 = await homePageService.getSectionByType(req.params.type);
-    if (!section1) {
-      throw new ApiError(httpStatus.NOT_FOUND, 'Section not found');
+const getHomePage = catchAsync(async (req, res) => {
+    const homepage = await homePageService.getHomePage();
+    if (!homepage) {
+      throw new ApiError(httpStatus.NOT_FOUND, 'HomePage data not found');
     }
-    res.send(section1);
+    res.send(homepage);
 });
 
-const createSection = catchAsync(async (req, res) => {
-    const user = await homePageService.createSection(req.body);
-    res.status(httpStatus.CREATED).send(user);
+const createHomePage = catchAsync(async (req, res) => {
+    const homepage = await homePageService.createHomePage(req.body);
+    res.status(httpStatus.CREATED).send(homepage);
   });
+
+const updateHomePage = catchAsync(async (req, res) => {
+  const homepage = await homePageService.updateHomePage(req);
+  res.status(httpStatus.CREATED).send(homepage);
+});
 
 
 module.exports = {
-    getSection,
-    createSection
+  getHomePage,
+  createHomePage,
+  updateHomePage
   };
   

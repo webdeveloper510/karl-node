@@ -20,8 +20,17 @@ const sectionsSchema =
 
 
 
-const sectionSchema = mongoose.Schema(
+const homePageSchema = mongoose.Schema(
   {
+    metatitle:{
+      type:String
+    },
+    metadescription:{
+      type:String
+    },
+    canonical:{
+      type:String
+    },
     background: {
       type: String,
       required: false,
@@ -53,8 +62,8 @@ const sectionSchema = mongoose.Schema(
   }
 );
 
-sectionSchema.plugin(toJSON);
-sectionSchema.plugin(paginate);
+homePageSchema.plugin(toJSON);
+homePageSchema.plugin(paginate);
 
 
 
@@ -62,6 +71,6 @@ sectionSchema.plugin(paginate);
 /**
  * @typedef Section
  */
-const Section = mongoose.model('Sections', sectionSchema);
+const HomePage = mongoose.model('HomePage', homePageSchema);
 
-module.exports = Section;
+module.exports = HomePage;

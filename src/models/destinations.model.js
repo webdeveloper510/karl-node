@@ -6,18 +6,22 @@ const destinationsSchema =
     {
         title: {
           type: String,
-          required: true,
+          required: false,
         },
         description: {
             type: String,
-            required: true,
+            required: false,
         },
         image: {
             type: String,
-            required: true,
+            required: false,
         },
         percentage:{
             type:Number
+        },
+        type: {
+          type: String,
+          required: false,
         }
         
     };
@@ -30,27 +34,15 @@ const destinationSchema = mongoose.Schema(
       type: String,
       required: false,
     },
-    image:{
-        type:String,
-        required:false
-    },
     slides:{
-      type:String,
-      required:true  
+      type:Array,
+      required:false  
     },
     sections:{
         type:[destinationsSchema],
         required:false  
     },
-    description:{
-        type:String,
-        required:false  
-    },
-    type: {
-      type: String,
-      required: true,
-    },
-   
+      
   },
   {
     timestamps: true,

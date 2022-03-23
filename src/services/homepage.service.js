@@ -1,32 +1,48 @@
 const httpStatus = require('http-status');
-const { Section } = require('../models');
+const { HomePage } = require('../models');
 const ApiError = require('../utils/ApiError');
 
 /**
  * Get section by type
  * @param {{string}} type
- * @returns {Promise<Section>}
+ * @returns {Promise<HomePage>}
  */
- const getSectionByType = async (type) => {
-    return Section.findOne({type});
+ const getHomePage = async () => {
+    return HomePage.findOne({type:"homepage"});
   };
 
 
   /**
- * Create  Section1
- * @param {Object} sectionBody
- * @returns {Promise<Section>}
+ * Create  HomePage
+ * @param {Object} homePageBody
+ * @returns {Promise<HomePage>}
  */
-const createSection = async (sectionBody) => {
+const createHomePage = async (homePageBody) => {
     // if (await User.isEmailTaken(userBody.email)) {
     //   throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
     // }
-    return Section.create(sectionBody);
+    return HomePage.create(homePageBody);
+  };
+
+
+  /**
+ * Update  HomePage
+ * @param {Object} homePageBody
+ * @returns {Promise<HomePage>}
+ */
+   const updateHomePage = async (req) => {
+    // if (await User.isEmailTaken(userBody.email)) {
+    //   throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
+    // }
+    let body = req.body
+    delete body['id']
+    return HomePage.updateOne({_id:req.body.id},body);
   };
 
 
 
   module.exports = {
-    getSectionByType,
-    createSection
+    getHomePage,
+    createHomePage,
+    updateHomePage
   };
