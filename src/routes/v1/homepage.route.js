@@ -90,13 +90,6 @@ module.exports = router;
  *     tags: [Sections]
  *     security:
  *       - bearerAuth: []
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: string
- *         description:  id of section on homepage
  *     requestBody:
  *       required: true
  *       content:
@@ -156,6 +149,13 @@ module.exports = router;
  *     tags: [Sections]
  *     security:
  *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description:  id of section on homepage
  *     responses:
  *       "200":
  *         description: OK
