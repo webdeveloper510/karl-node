@@ -45,7 +45,7 @@ const createDestination = async (destinationBody) => {
     }
     let body = req.body
     delete body['id']
-    Object.assign(section, body);
+    Object.assign(destination, body);
     await destination.save();
     return destination;
   };
