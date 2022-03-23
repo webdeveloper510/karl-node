@@ -8,27 +8,27 @@ const router = express.Router();
 
 
 router
-  .route('/')
-.get(homepageController.getHomePage);
+  .route('/section/:id')
+.get(homepageController.getHomePageSection);
 // router.get('/section2', homepageController.getSection2);
 // router.get('/section3', homepageController.getSection3);
 
 router
-  .route('/create')
-.post(homepageController.createHomePage);
+  .route('/createSection')
+.post(homepageController.createHomePageSection);
 
 
 
 router
-  .route('/update')
-.post(homepageController.updateHomePage);
+  .route('/updateSection')
+.post(homepageController.updateHomePageSection);
 
 
 module.exports = router;
 
 /**
  * @swagger
- * /homepage/create:
+ * /homepage/createSection:
  *   post:
  *     summary: Create Home Page content
  *     description: Only admins can create Home page data.
@@ -83,13 +83,20 @@ module.exports = router;
 
 /**
  * @swagger
- * /homepage/update:
+ * /homepage/updateSection:
  *   post:
  *     summary: Update Home Page content
  *     description: Only admins can update Home page data.
  *     tags: [Sections]
  *     security:
  *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description:  id of section on homepage
  *     requestBody:
  *       required: true
  *       content:
@@ -142,7 +149,7 @@ module.exports = router;
 
 /**
  * @swagger
- * /homepage:
+ * /homepage/section/{id}:
  *   get:
  *     summary: Get Home Page Content & Sections
  *     description: Get the Home Page data

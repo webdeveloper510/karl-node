@@ -7,8 +7,8 @@ const ApiError = require('../utils/ApiError');
  * @param {{string}} type
  * @returns {Promise<HomePage>}
  */
- const getHomePage = async () => {
-    return HomePage.findOne({type:"homepage"});
+ const getHomePageSectionById = async (req) => {
+    return HomePage.findById(req.params.id);
   };
 
 
@@ -17,11 +17,11 @@ const ApiError = require('../utils/ApiError');
  * @param {Object} homePageBody
  * @returns {Promise<HomePage>}
  */
-const createHomePage = async (homePageBody) => {
+const createHomePageSection = async (homePageSectionBody) => {
     // if (await User.isEmailTaken(userBody.email)) {
     //   throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
     // }
-    return HomePage.create(homePageBody);
+    return HomePage.create(homePageSectionBody);
   };
 
 
@@ -30,7 +30,7 @@ const createHomePage = async (homePageBody) => {
  * @param {Object} homePageBody
  * @returns {Promise<HomePage>}
  */
-   const updateHomePage = async (req) => {
+   const updateHomePageSection = async (req) => {
     // if (await User.isEmailTaken(userBody.email)) {
     //   throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
     // }
@@ -42,7 +42,7 @@ const createHomePage = async (homePageBody) => {
 
 
   module.exports = {
-    getHomePage,
-    createHomePage,
-    updateHomePage
+    getHomePageSectionById,
+    createHomePageSection,
+    updateHomePageSection
   };
