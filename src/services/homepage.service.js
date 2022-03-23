@@ -25,19 +25,22 @@ const createHomePageSection = async (homePageSectionBody) => {
   };
 
 
+
   /**
- * Update  HomePage
- * @param {Object} homePageBody
- * @returns {Promise<HomePage>}
+ * Update Home Page Section
+ * @returns {Promise<User>}
  */
-   const updateHomePageSection = async (req) => {
-    // if (await User.isEmailTaken(userBody.email)) {
-    //   throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
-    // }
-    let body = req.body
-    delete body['id']
-    return HomePage.updateOne({_id:req.body.id},body);
-  };
+const updateHomePageSection = async (req) => {
+  const section = await getHomePageSectionById(req.body.id);
+  if (!section) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Data not found');
+  }
+  let body = req.body
+  delete body['id']
+  Object.assign(section, body);
+  await section.save();
+  return section;
+};
 
 
 
