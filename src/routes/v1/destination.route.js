@@ -20,6 +20,13 @@ router
 // router.get('/section3', homepageController.getSection3);
 
 
+
+
+router
+  .route('/:id/sections')
+.get(destinationController.getDestinationSections);
+
+
 router
   .route('/addsection')
 .post(destinationController.createDestinationSection);
@@ -239,6 +246,37 @@ module.exports = router;
  *           application/json:
  *             schema:
  *                $ref: '#/components/schemas/Destination'
+ *       "403":
+ *         $ref: '#/components/responses/Forbidden'
+ *       "404":
+ *         $ref: '#/components/responses/NotFound'
+ * 
+ */
+
+
+/**
+ * @swagger
+ * /destination/{id}/sections:
+ *   get:
+ *     summary: Get all sections of a destination
+ *     description:  Get all sections of a destination
+ *     tags: [Destinations]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           id: string
+ *         description: Type
+ *     responses:
+ *       "200":
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *                $ref: '#/components/schemas/Seection'
  *       "403":
  *         $ref: '#/components/responses/Forbidden'
  *       "404":

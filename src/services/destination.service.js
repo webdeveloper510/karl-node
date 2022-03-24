@@ -1,6 +1,8 @@
 const httpStatus = require('http-status');
 const { Destination,Section } = require('../models');
 const ApiError = require('../utils/ApiError');
+const mongoose = require('mongoose');
+
 
 /**
  * Get section by type
@@ -10,6 +12,16 @@ const ApiError = require('../utils/ApiError');
  const getDestinationById = async (id) => {
     return Destination.findById(id);
   };
+
+
+  /**
+ * Get section by type
+ * @param {{string}} id
+ * @returns {Promise<Destination>}
+ */
+ const getDestinationSections = async (id) => {
+  return Section.find({destination:mongoose.Types.ObjectId(id)});
+};
 
 
   /**
@@ -71,5 +83,6 @@ const createDestinationSection = async (destinationSectionBody) => {
     getDestinationById,
     createDestination,
     updateDestination,
-    createDestinationSection
+    createDestinationSection,
+    getDestinationSections
   };
