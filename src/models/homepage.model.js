@@ -9,12 +9,15 @@ const sectionsSchema =
         },
         description: {
             type: String,
-            required: true,
+            required: false,
         },
         image: {
         type: String,
-        percentage:Number,
-        required: true,
+        required: false,
+        },
+        percentage:{
+          type:Number,
+          required: false,
         },
     };
 
