@@ -26,6 +26,10 @@ router
   .route('/:id/sections')
 .get(destinationController.getDestinationSections);
 
+router
+  .route('/section/:sectionId')
+.get(destinationController.getDestinationSection);
+
 
 router
   .route('/addsection')
@@ -40,6 +44,10 @@ router
   .route('/update')
 .post(destinationController.updateDestination);
 
+
+router
+  .route('/updateSection')
+.post(destinationController.updateDestinationSection);
 module.exports = router;
 
 /**
@@ -269,18 +277,105 @@ module.exports = router;
  *         required: true
  *         schema:
  *           id: string
- *         description: Type
+ *         description: id
  *     responses:
  *       "200":
  *         description: OK
  *         content:
  *           application/json:
  *             schema:
- *                $ref: '#/components/schemas/Seection'
+ *                $ref: '#/components/schemas/Section'
  *       "403":
  *         $ref: '#/components/responses/Forbidden'
  *       "404":
  *         $ref: '#/components/responses/NotFound'
  * 
+ */
+
+/**
+ * @swagger
+ * /destination/section/{sectionId}:
+ *   get:
+ *     summary: Get a section of a destination
+ *     description:  Get a section of a destination
+ *     tags: [Destinations]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: sectionId
+ *         required: true
+ *         schema:
+ *           sectionId: string
+ *         description: sectionId
+ *     responses:
+ *       "200":
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *                $ref: '#/components/schemas/Section'
+ *       "403":
+ *         $ref: '#/components/responses/Forbidden'
+ *       "404":
+ *         $ref: '#/components/responses/NotFound'
+ * 
+ */
+
+
+/**
+ * @swagger
+ * /destination/updateSection:
+ *   post:
+ *     summary: Update a Destination Section
+ *     description: Only admins can update Destination.
+ *     tags: [Destinations]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - title
+ *               - id
+ *             properties:
+ *               id:
+ *                 type: string
+ *               title:
+ *                 type: string
+ *               description:
+ *                 type: string
+ *               image:
+ *                 type: string
+ *               percentage: 
+ *                 type: string
+ *               type:
+ *                 type: string
+ *               destination:
+ *                 type: string
+ *               sections:
+ *                 type: array
+ *             example:
+ *               id: 345345346356
+ *               title: sdf
+ *               slides: ['https://picsum.photos/id/1015/1000/400/']
+ *               description: Ibiza
+ *               image: testing
+ *               percentage: 50
+ *               type: section
+ *               destination: string
+ *               sections: [{title,description,image,percentage,type}]
+ *     responses:
+ *       "201":
+ *         description: Updated
+ *         content:
+ *           application/json:
+ *             schema:
+ *                $ref: '#/components/schemas/Section'
+ *       "403":
+ *         $ref: '#/components/responses/Forbidden'
  */
  

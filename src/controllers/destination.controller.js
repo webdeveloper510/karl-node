@@ -22,13 +22,7 @@ const getDestination = catchAsync(async (req, res) => {
     res.send(destination);
 });
 
-const getDestinationSections = catchAsync(async (req, res) => {
-  const destinationSections = await destinationService.getDestinationSections(req.params.id);
-  if (!destinationSection) {
-    throw new ApiError(httpStatus.NOT_FOUND, 'Destination Sections not found');
-  }
-  res.send(destinationSections);
-});
+
 
 
 
@@ -48,12 +42,37 @@ const createDestinationSection = catchAsync(async (req, res) => {
 });
 
 
+const getDestinationSections = catchAsync(async (req, res) => {
+  const destinationSections = await destinationService.getDestinationSections(req.params.id);
+  if (!destinationSections) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Destination Sections not found');
+  }
+  res.send(destinationSections);
+});
+
+const getDestinationSection = catchAsync(async (req, res) => {
+  const destinationSection = await destinationService.getDestinationSection(req.params.sectionId);
+  if (!destinationSection) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Destination Section not found');
+  }
+  res.send(destinationSection);
+});
+
+
+const updateDestinationSection = catchAsync(async (req, res) => {
+  const destinationSection = await destinationService.updateDestinationSection(req);
+  res.status(httpStatus.CREATED).send(destinationSection);
+});
+
+
 module.exports = {
     getDestinationList,
     getDestination,
     createDestination,
     updateDestination,
     createDestinationSection,
-    getDestinationSections
+    getDestinationSections,
+    getDestinationSection,
+    updateDestinationSection
   };
   

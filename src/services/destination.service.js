@@ -15,13 +15,23 @@ const mongoose = require('mongoose');
 
 
   /**
- * Get section by type
+ * Get sections by destinationId
  * @param {{string}} id
  * @returns {Promise<Destination>}
  */
  const getDestinationSections = async (id) => {
   return Section.find({destination:mongoose.Types.ObjectId(id)});
 };
+
+ /**
+ * Get destination section by  sectionId
+ * @param {{string}} id
+ * @param {{string}} sectionId
+ * @returns {Promise<Destination>}
+ */
+  const getDestinationSection = async (id) => {
+    return Section.findById(id);
+  };
 
 
   /**
@@ -62,6 +72,24 @@ const createDestination = async (destinationBody) => {
     return destination;
   };
 
+
+
+  /**
+ * Update Destination Section
+ * @returns {Promise<Section>}
+ */
+   const updateDestinationSection = async (req) => {
+    const destinationSection = await getDestinationSection(req.body.id);
+    if (!destinationSection) {
+      throw new ApiError(httpStatus.NOT_FOUND, 'Data not found');
+    }
+    let body = req.body
+    delete body['id']
+    Object.assign(destinationSection, body);
+    await destinationSection.save();
+    return destinationSection;
+  };
+
     /**
  * Create  Destination Section
  * @param {Object} destinationSectionBody
@@ -84,5 +112,7 @@ const createDestinationSection = async (destinationSectionBody) => {
     createDestination,
     updateDestination,
     createDestinationSection,
-    getDestinationSections
+    getDestinationSections,
+    getDestinationSection,
+    updateDestinationSection
   };
