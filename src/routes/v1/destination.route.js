@@ -19,6 +19,11 @@ router
 // router.get('/section2', homepageController.getSection2);
 // router.get('/section3', homepageController.getSection3);
 
+
+router
+  .route('/addsection')
+.post(destinationController.createDestinationSection);
+
 router
   .route('/create')
 .post(destinationController.createDestination);
@@ -77,6 +82,59 @@ module.exports = router;
  *           application/json:
  *             schema:
  *                $ref: '#/components/schemas/Destination'
+ *       "403":
+ *         $ref: '#/components/responses/Forbidden'
+ */
+
+
+/**
+ * @swagger
+ * /destination/addsection:
+ *   post:
+ *     summary: Create a Destination Section
+ *     description: Only admins can create Destination Sction.
+ *     tags: [Destinations]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - title
+ *             properties:
+ *               title:
+ *                 type: string
+ *               description:
+ *                 type: string
+ *               image:
+ *                 type: string
+ *               percentage:
+ *                 type: string
+ *               type:
+ *                 type: string
+ *               destination:
+ *                 type: string
+ *               sections:
+ *                 type: array
+ *             example:
+ *               slides: ['https://picsum.photos/id/1015/1000/400/']
+ *               title: testing
+ *               description: testing desc
+ *               image: url
+ *               percentage: 50
+ *               type: testing
+ *               destination: 45345345345
+ *               sections: [{title,description,image,percentage,type}]
+ *     responses:
+ *       "201":
+ *         description: Created
+ *         content:
+ *           application/json:
+ *             schema:
+ *                $ref: '#/components/schemas/Section'
  *       "403":
  *         $ref: '#/components/responses/Forbidden'
  */

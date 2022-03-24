@@ -1,5 +1,5 @@
 const httpStatus = require('http-status');
-const { Destination } = require('../models');
+const { Destination,Section } = require('../models');
 const ApiError = require('../utils/ApiError');
 
 /**
@@ -35,7 +35,7 @@ const createDestination = async (destinationBody) => {
   };
 
   /**
- * Update Home Page Section
+ * Update Destination
  * @returns {Promise<Destination>}
  */
    const updateDestination = async (req) => {
@@ -50,11 +50,26 @@ const createDestination = async (destinationBody) => {
     return destination;
   };
 
+    /**
+ * Create  Destination Section
+ * @param {Object} destinationSectionBody
+ * @returns {Promise<Section>}
+ */
+const createDestinationSection = async (destinationSectionBody) => {
+  // if (await User.isEmailTaken(userBody.email)) {
+  //   throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
+  // }
+  return Section.create(destinationSectionBody);
+};
+
+  
+
 
 
   module.exports = {
     getDestinationList,
     getDestinationById,
     createDestination,
-    updateDestination
+    updateDestination,
+    createDestinationSection
   };

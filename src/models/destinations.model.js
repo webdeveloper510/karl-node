@@ -38,10 +38,11 @@ const destinationSchema = mongoose.Schema(
       type:Array,
       required:false  
     },
-    sections:{
-        type:[destinationsSchema],
-        required:false  
-    },
+    type:{
+      type:String,
+      required:false
+    }
+   
       
   },
   {

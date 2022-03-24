@@ -32,11 +32,17 @@ const updateDestination = catchAsync(async (req, res) => {
   res.status(httpStatus.CREATED).send(destination);
 });
 
+const createDestinationSection = catchAsync(async (req, res) => {
+  const destinationSection = await destinationService.createDestinationSection(req.body);
+  res.status(httpStatus.CREATED).send(destinationSection);
+});
+
 
 module.exports = {
     getDestinationList,
     getDestination,
     createDestination,
-    updateDestination
+    updateDestination,
+    createDestinationSection
   };
   
