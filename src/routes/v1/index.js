@@ -18,12 +18,10 @@ const defaultRoutes = [
     path: '/users',
     route: userRoute,
   },
-<<<<<<< HEAD
 	{
 		path:'/docs',
 		route:docsRoute
-	}
-=======
+	},
   {
     path: '/homepage',
     route: homepageRoute,
@@ -36,7 +34,6 @@ const defaultRoutes = [
     path: '/pagemeta',
     route: pageMetaRoute,
   },
->>>>>>> f0bd0318d0856988d5779b6eaee624a35c91cfac
 ];
 
 //const devRoutes = [
