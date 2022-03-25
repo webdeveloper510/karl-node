@@ -18,7 +18,91 @@ components:
         email: fake@example.com
         name: fake name
         role: user
-
+    HomePage:
+      type: object
+      properties:
+        metatitle:
+          type: string
+        metadescription:
+          type: string
+        id:
+          type: string
+        type:
+          type: string
+          enum: [section1, section2, section3, section4, section5, section6]
+        title:
+          type: string
+        description1:
+          type: string
+        description2:
+          type: string
+        sections:
+          type: array
+      example:
+        id: 5ebac534954b54139806c112
+        type: homepage
+        title: Hello Holidays
+        description1: Save up to £750 per person on selected holidays to Greece, Spain, Portugal & Italy
+        description2: Great deals, with a price match promise & deposits from £30, say hello to holidays that make you smile
+        sections: [{title,description,image,percentage}]
+    PageMeta:
+      type: object
+      properties:
+        id:
+          type: string
+        metatitle:
+          type: string
+        metadescription:
+          type: string
+        canonical:
+          type: string
+      example:
+        id: 5ebac534954b54139806c113
+        metatitle: title
+        metadescription: description
+        canonical: https://picsum.photos/id/1015/1000/400/
+    Destination:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        sections:
+          type: array
+        slides:
+          type: array
+      example:
+        id: 5ebac534954b54139806c113
+        title: Destination1
+        slides: [{title,description,image,percentage,type}]
+        sections: [https://picsum.photos/id/1015/1000/400/]
+    Section:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        image:
+          type: string
+        percentage:
+          type: number
+        type:
+          type: string
+        destination:
+          type: string
+        sections:
+          type: array
+      example:
+        id: 5ebac534954b54139806c112
+        type: destination
+        title: Hello Holidays
+        description: Save up to £750 per person on selected holidays to Greece, Spain, Portugal & Italy
+        image: Great deals, with a price match promise & deposits from £30, say hello to holidays that make you smile
+        percenatage: 50
+        destination: 345345345
+        sections: [{title,description,image,percentage}]
     Token:
       type: object
       properties:
