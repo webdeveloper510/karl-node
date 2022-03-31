@@ -33,6 +33,7 @@ const destinationSchema = mongoose.Schema(
     title: {
       type: String,
       required: false,
+      unique : true,
     },
     slides:{
       type:Array,

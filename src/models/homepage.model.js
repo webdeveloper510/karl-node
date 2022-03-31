@@ -12,8 +12,8 @@ const sectionsSchema =
             required: false,
         },
         image: {
-        type: String,
-        required: false,
+          type: String,
+          required: false,
         },
         percentage:{
           type:Number,

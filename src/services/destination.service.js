@@ -13,6 +13,15 @@ const mongoose = require('mongoose');
     return Destination.findById(id);
   };
 
+/**
+ * Get destination by name
+ * @param {{string}} name
+ * @returns {Promise<Destination>}
+ */
+ const getDestinationByName = async (name) => {
+  return Destination.findOne({title:name});
+};
+  
 
   /**
  * Get sections by destinationId
@@ -22,6 +31,19 @@ const mongoose = require('mongoose');
  const getDestinationSections = async (id) => {
   return Section.find({destination:mongoose.Types.ObjectId(id)});
 };
+
+
+  /**
+ * Get sections by destinationId
+ * @param {{string}} name
+ * @returns {Promise<Destination>}
+ */
+   const getDestinationSectionsFromName = async (name) => {
+    //return Destination.findOne({title:name});
+    return Section.find({destination:name});
+  };
+
+
 
  /**
  * Get destination section by  sectionId
@@ -110,7 +132,9 @@ const createDestinationSection = async (destinationSectionBody) => {
     getDestinationList,
     getDestinationById,
     createDestination,
+    getDestinationByName,
     updateDestination,
+    getDestinationSectionsFromName,
     createDestinationSection,
     getDestinationSections,
     getDestinationSection,

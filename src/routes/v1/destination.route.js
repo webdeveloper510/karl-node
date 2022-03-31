@@ -19,12 +19,20 @@ router
 // router.get('/section2', homepageController.getSection2);
 // router.get('/section3', homepageController.getSection3);
 
-
+router
+  .route('/name/:name')
+.get(destinationController.getDestinationByName);
 
 
 router
   .route('/:id/sections')
 .get(destinationController.getDestinationSections);
+
+
+router
+  .route('/:name/sectionsByName')
+.get(destinationController.getDestinationSectionsFromName);
+
 
 router
   .route('/section/:sectionId')
@@ -240,6 +248,38 @@ module.exports = router;
 
 /**
  * @swagger
+ * /destination/name/{name}:
+ *   get:
+ *     summary: Get a Destination
+ *     description: Get the detail of  destination
+ *     tags: [Destinations]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: name
+ *         required: true
+ *         schema:
+ *           name: string
+ *         description: Type
+ *     responses:
+ *       "200":
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *                $ref: '#/components/schemas/Destination'
+ *       "403":
+ *         $ref: '#/components/responses/Forbidden'
+ *       "404":
+ *         $ref: '#/components/responses/NotFound'
+ * 
+ */
+
+
+
+/**
+ * @swagger
  * /destination/list:
  *   get:
  *     summary: Get All destinations
@@ -291,6 +331,39 @@ module.exports = router;
  *         $ref: '#/components/responses/NotFound'
  * 
  */
+
+
+/**
+ * @swagger
+ * /destination/{name}/sectionsByName:
+ *   get:
+ *     summary: Get all sections of a destination
+ *     description:  Get all sections of a destination
+ *     tags: [Destinations]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: name
+ *         required: true
+ *         schema:
+ *           name: string
+ *         description: name
+ *     responses:
+ *       "200":
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *                $ref: '#/components/schemas/Section'
+ *       "403":
+ *         $ref: '#/components/responses/Forbidden'
+ *       "404":
+ *         $ref: '#/components/responses/NotFound'
+ * 
+ */
+
+
 
 /**
  * @swagger
