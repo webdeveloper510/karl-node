@@ -4,6 +4,7 @@ const userRoute = require('./user.route');
 const docsRoute = require('./docs.route');
 const homepageRoute = require('./homepage.route');
 const destinationRoute = require('./destination.route');
+const holidayRoute = require('./holiday.route');
 const pageMetaRoute = require('./pagemeta.route');
 const config = require('../../config/config');
 
@@ -29,6 +30,10 @@ const defaultRoutes = [
   {
     path: '/destination',
     route: destinationRoute,
+  },
+  {
+    path: '/holiday',
+    route: holidayRoute,
   },
   {
     path: '/pagemeta',
