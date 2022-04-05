@@ -19,7 +19,7 @@ const pageMetaSchema = mongoose.Schema(
     type:{
         type:String
     }
-     
+
   },
   {
     timestamps: true,

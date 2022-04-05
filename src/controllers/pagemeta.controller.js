@@ -28,7 +28,6 @@ const createPageMeta = catchAsync(async (req, res) => {
   });
 
   const updatePageMeta = catchAsync(async (req, res) => {
-      console.log(req)
     const pageMeta = await pageMetaService.updatePageMeta(req);
     res.status(httpStatus.CREATED).send(pageMeta);
   });
@@ -41,6 +40,5 @@ module.exports = {
     getPageMeta,
     listPageMeta,
     updatePageMeta
-
   };
   

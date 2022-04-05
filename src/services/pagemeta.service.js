@@ -1,19 +1,26 @@
 const httpStatus = require('http-status');
 const { PageMeta } = require('../models');
 const ApiError = require('../utils/ApiError');
+const HomePageMeta = require('../models/homepageMeta.model');
+const destinationMeta = require('../models/destinationMeta.model');
 
 /**
  * Get Meta of page by type
  * @param {{string}} type
  * @returns {Promise<PageMeta>}
  */
- const getPageMeta = async (type) => {
+  const getPageMeta = async (type) => {
     return PageMeta.findOne({type});
   };
 
 
-  const getPageMetaById = async (id) => {
-    return PageMeta.findById(id);
+  const getPageMetaById = async (type, id, updateData) => {
+    if(type === 'homepage'){
+      return await HomePageMeta.findByIdAndUpdate(id, {$set : updateData}, {new : true, runValidators : true});
+    }
+    if(type === 'destination'){
+      return await destinationMeta.findByIdAndUpdate(id, {$set : updateData}, {new : true, runValidators : true});
+    }
   };
 
 
@@ -45,17 +52,35 @@ const createPageMeta = async (PageMetaBody) => {
  * @returns {Promise<PageMeta>}
  */
    const updatePageMeta = async (req) => {
-     console.log(req)
-    const pagemeta = await getPageMetaById(req.body.id);
-    if (!pagemeta) {
+    const { id, type, metatitle, metadescription, canonical } = req.body;
+    if(!metatitle || !metadescription || !canonical){
+      throw new ApiError(httpStatus.BAD_REQUEST, 'please provide required fields');
+    }
+    const updateData = {
+      metatitle,
+      metadescription,
+      canonical
+    }
+    const pageMeta = await getPageMetaById(type, req.body.id, updateData);
+    if(!pageMeta){
       throw new ApiError(httpStatus.NOT_FOUND, 'Data not found');
     }
-    console.log(pagemeta)
-    let body = req.body
-    delete body['id']
-    Object.assign(pagemeta, body);
-    await pagemeta.save();
-    return pagemeta;
+    let body = req.body;
+    delete body['id'];
+    Object.assign(pageMeta, body);
+    return pageMeta;
+  
+    // const pagemeta = await getPageMetaById(req.body.id);
+    // console.log(pagemeta)
+    // if (!pagemeta) {
+    //   throw new ApiError(httpStatus.NOT_FOUND, 'Data not found');
+    // }
+    // console.log(pagemeta)
+    // let body = req.body
+    // delete body['id']
+    // Object.assign(pagemeta, body);
+    // await pagemeta.save();
+    // return pagemeta;
   };
   
 
@@ -67,5 +92,5 @@ const createPageMeta = async (PageMetaBody) => {
     listPageMeta,
     createPageMeta,
     updatePageMeta
-    
+
   };
