@@ -23,7 +23,7 @@ const getDestination = catchAsync(async (req, res) => {
 });
 
 
-const getDestinationByName = catchAsync(async (req,res)=>{
+const getDestinationByName = catchAsync(async (req,res)=> {
   console.log("here")
   const destination = await destinationService.getDestinationByName(req.params.name);
     if (!destination) {
@@ -31,8 +31,6 @@ const getDestinationByName = catchAsync(async (req,res)=>{
     }
     res.send(destination);
 })
-
-
 
 
 const createDestination = catchAsync(async (req, res) => {
@@ -58,7 +56,6 @@ const getDestinationSections = catchAsync(async (req, res) => {
   }
   res.send(destinationSections);
 });
-
 
 
 const getDestinationSectionsFromName = catchAsync(async (req, res) => {

@@ -3,59 +3,30 @@ const validate = require('../../middlewares/validate');
 const authValidation = require('../../validations/auth.validation');
 const destinationController = require('../../controllers/destination.controller');
 const auth = require('../../middlewares/auth');
-
 const router = express.Router();
 
 
+router.route('/list').get(destinationController.getDestinationList);
 
-router
-  .route('/list')
-.get(destinationController.getDestinationList);
-
-
-router
-  .route('/:id')
-.get(destinationController.getDestination);
+router.route('/:id').get(destinationController.getDestination);
 // router.get('/section2', homepageController.getSection2);
 // router.get('/section3', homepageController.getSection3);
+router.route('/name/:name').get(destinationController.getDestinationByName);
 
-router
-  .route('/name/:name')
-.get(destinationController.getDestinationByName);
+router.route('/:id/sections').get(destinationController.getDestinationSections);
 
+router.route('/:name/sectionsByName').get(destinationController.getDestinationSectionsFromName);
 
-router
-  .route('/:id/sections')
-.get(destinationController.getDestinationSections);
+router.route('/section/:sectionId').get(destinationController.getDestinationSection);
 
+router.route('/addsection').post(destinationController.createDestinationSection);
 
-router
-  .route('/:name/sectionsByName')
-.get(destinationController.getDestinationSectionsFromName);
+router.route('/create').post(destinationController.createDestination);
 
+router.route('/update').post(destinationController.updateDestination);
 
-router
-  .route('/section/:sectionId')
-.get(destinationController.getDestinationSection);
+router.route('/updateSection').post(destinationController.updateDestinationSection);
 
-
-router
-  .route('/addsection')
-.post(destinationController.createDestinationSection);
-
-router
-  .route('/create')
-.post(destinationController.createDestination);
-
-
-router
-  .route('/update')
-.post(destinationController.updateDestination);
-
-
-router
-  .route('/updateSection')
-.post(destinationController.updateDestinationSection);
 module.exports = router;
 
 /**

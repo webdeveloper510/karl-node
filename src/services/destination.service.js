@@ -1,5 +1,6 @@
 const httpStatus = require('http-status');
 const { Destination,Section } = require('../models');
+console.log(Section)
 const ApiError = require('../utils/ApiError');
 const mongoose = require('mongoose');
 
@@ -10,7 +11,7 @@ const mongoose = require('mongoose');
  * @returns {Promise<Destination>}
  */
  const getDestinationById = async (id) => {
-    return Destination.findById(id);
+    return await Destination.findById(id);
   };
 
 /**
@@ -19,7 +20,7 @@ const mongoose = require('mongoose');
  * @returns {Promise<Destination>}
  */
  const getDestinationByName = async (name) => {
-  return Destination.findOne({title:name});
+  return await Destination.findOne({title:name});
 };
   
 
@@ -29,7 +30,7 @@ const mongoose = require('mongoose');
  * @returns {Promise<Destination>}
  */
  const getDestinationSections = async (id) => {
-  return Section.find({destination:mongoose.Types.ObjectId(id)});
+  return await Section.find({destination:mongoose.Types.ObjectId(id)});
 };
 
 
@@ -40,7 +41,7 @@ const mongoose = require('mongoose');
  */
    const getDestinationSectionsFromName = async (name) => {
     //return Destination.findOne({title:name});
-    return Section.find({destination:name});
+    return await Section.find({destination:name});
   };
 
 
@@ -52,7 +53,7 @@ const mongoose = require('mongoose');
  * @returns {Promise<Destination>}
  */
   const getDestinationSection = async (id) => {
-    return Section.findById(id);
+    return await Section.findById(id);
   };
 
 
@@ -75,7 +76,7 @@ const createDestination = async (destinationBody) => {
     // if (await User.isEmailTaken(userBody.email)) {
     //   throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
     // }
-    return Destination.create(destinationBody);
+    return await Destination.create(destinationBody);
   };
 
   /**
@@ -93,7 +94,6 @@ const createDestination = async (destinationBody) => {
     await destination.save();
     return destination;
   };
-
 
 
   /**
@@ -121,7 +121,7 @@ const createDestinationSection = async (destinationSectionBody) => {
   // if (await User.isEmailTaken(userBody.email)) {
   //   throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
   // }
-  return Section.create(destinationSectionBody);
+  return await Section.create(destinationSectionBody);
 };
 
 

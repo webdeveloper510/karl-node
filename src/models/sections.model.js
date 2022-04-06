@@ -45,11 +45,9 @@ const sectionsSchema = mongoose.Schema(
           required: false,
         },
         destination:{
-           
             type: mongoose.SchemaTypes.ObjectId,
             ref: 'Destinations',
             required: false,
-              
         },
         sections:{
             type:[subsectionsSchema],

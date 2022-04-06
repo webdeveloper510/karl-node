@@ -3,54 +3,48 @@ const mongoose = require('mongoose');
 const { toJSON, paginate } = require('./plugins');
 
 
-const destinationsSchema = 
-    {
-        title: {
-          type: String,
-          required: false,
-        },
-        description: {
-            type: String,
-            required: false,
-        },
-        image: {
-            type: String,
-            required: false,
-        },
-        percentage:{
-            type:Number
-        },
-        metaTitle : {
-          type: String,
-          required : true
-        },
-        metaDescription : {
-          type : String,
-          required : true
-        },
-        
-        
-    };
-
-
+// const destinationsSchema = {
+//       title: {
+//         type: String,
+//         required: false,
+//       },
+//       description: {
+//         type: String,
+//           required: false,
+//       },
+//       image: {
+//         type: String,
+//           required: false,
+//       },
+//       percentage:{
+//         type:Number
+//       }        
+// };
 
 const destinationSchema = mongoose.Schema(
   {
-    title: {
-      type: String,
-      required: false,
-      unique : true,
-    },
-    slides:{
-      type:Array,
-      required:false  
-    },
-    type:{
-      type:String,
-      required:false
-    }
-   
-   
+  title: {
+    type: String,
+    required: false,
+    unique : true,
+  },
+  slides:{
+    type:Array,
+    required:false  
+  },
+  metaTitle : {
+    type : String,
+    required : true
+  },
+  metaDescription : {
+    type : String,
+    required : true
+  },
+  canonical : {
+    type : String,
+    required : true
+  }
+  
   },
   {
     timestamps: true,
@@ -59,9 +53,6 @@ const destinationSchema = mongoose.Schema(
 
 destinationSchema.plugin(toJSON);
 destinationSchema.plugin(paginate);
-
-
-
 
 /**
  * @typedef Section

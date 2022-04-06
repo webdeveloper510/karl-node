@@ -12,14 +12,18 @@ router.route('/')
 // auth('getUsers'), 
 .get(validate(userValidation.getUsers), userController.getUsers);
 
+// auth('manageUsers'), 
+router.route('/update/user').put(validate(userValidation.updateUser), userController.updateUser);
+
 router
 .route('/:userId')
 // auth('getUsers'), 
 .get(validate(userValidation.getUser), userController.getUser)
-// auth('manageUsers'), 
-.patch(validate(userValidation.updateUser), userController.updateUser)
+
 // auth('manageUsers'), 
 .delete(validate(userValidation.deleteUser), userController.deleteUser);
+
+// .patch(validate(userValidation.updateUser), userController.updateUser)
 
 module.exports = router;
 
@@ -150,56 +154,28 @@ module.exports = router;
  *         $ref: '#/components/responses/Forbidden'
  */
 
+
 /**
  * @swagger
- * /users/{id}:
- *   get:
- *     summary: Get a user
- *     description: Logged in users can fetch only their own user information. Only admins can fetch other users.
- *     tags: [Users]
- *     security:
- *       - bearerAuth: []
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: string
- *         description: User id
- *     responses:
- *       "200":
- *         description: OK
- *         content:
- *           application/json:
- *             schema:
- *                $ref: '#/components/schemas/User'
- *       "401":
- *         $ref: '#/components/responses/Unauthorized'
- *       "403":
- *         $ref: '#/components/responses/Forbidden'
- *       "404":
- *         $ref: '#/components/responses/NotFound'
- *
- *   patch:
+ * /update/user:
+ *   post:
  *     summary: Update a user
  *     description: Logged in users can only update their own information. Only admins can update other users.
  *     tags: [Users]
  *     security:
  *       - bearerAuth: []
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: string
- *         description: User id
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
  *           schema:
- *             type: object
+ *             type: object   
+ *             required:
+ *               - title
+ *               - id                                                  
  *             properties:
+ *               id:
+ *                 type: string
  *               name:
  *                 type: string
  *               email:
@@ -231,6 +207,39 @@ module.exports = router;
  *       "404":
  *         $ref: '#/components/responses/NotFound'
  *
+
+
+/**
+ * @swagger
+ * /users/{id}:
+ *   get:
+ *     summary: Get a user
+ *     description: Logged in users can fetch only their own user information. Only admins can fetch other users.
+ *     tags: [Users]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: User id
+ *     responses:
+ *       "200":
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *                $ref: '#/components/schemas/User'
+ *       "401":
+ *         $ref: '#/components/responses/Unauthorized'
+ *       "403":
+ *         $ref: '#/components/responses/Forbidden'
+ *       "404":
+ *         $ref: '#/components/responses/NotFound'
+ *
+
  *   delete:
  *     summary: Delete a user
  *     description: Logged in users can delete only themselves. Only admins can delete other users.
