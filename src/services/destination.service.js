@@ -124,9 +124,6 @@ const createDestinationSection = async (destinationSectionBody) => {
   return Section.create(destinationSectionBody);
 };
 
-  
-
-
 
   module.exports = {
     getDestinationList,

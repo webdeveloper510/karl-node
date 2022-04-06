@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
 const homePageMetaSchema = new mongoose.Schema({
-    metatitle : {
+    metaTitle : {
         type : String,
         required : true
     },
-    metadescription : {
+    metaDescription : {
         type : String,
         required : true
     },

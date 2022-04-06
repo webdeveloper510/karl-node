@@ -1,3 +1,4 @@
+const { string } = require('joi');
 const mongoose = require('mongoose');
 const { toJSON, paginate } = require('./plugins');
 
@@ -19,10 +20,15 @@ const destinationsSchema =
         percentage:{
             type:Number
         },
-        type: {
+        metaTitle : {
           type: String,
-          required: false,
-        }
+          required : true
+        },
+        metaDescription : {
+          type : String,
+          required : true
+        },
+        
         
     };
 
@@ -44,7 +50,7 @@ const destinationSchema = mongoose.Schema(
       required:false
     }
    
-      
+   
   },
   {
     timestamps: true,

@@ -7,25 +7,15 @@ const auth = require('../../middlewares/auth');
 const router = express.Router();
 
 
-router
-  .route('/sections')
-.get(homepageController.listHomePageSections);
+router.route('/sections').get(homepageController.listHomePageSections);
 
-
-router
-  .route('/section/:id')
-.get(homepageController.getHomePageSection);
+router.route('/section/:id').get(homepageController.getHomePageSection);
 // router.get('/section2', homepageController.getSection2);
 // router.get('/section3', homepageController.getSection3);
 
-router
-  .route('/createSection')
-.post(homepageController.createHomePageSection);
+router.route('/createSection').post(homepageController.createHomePageSection);
 
-
-router
-  .route('/updateSection')
-.post(homepageController.updateHomePageSection);
+router.route('/updateSection').post(homepageController.updateHomePageSection);
 
 
 module.exports = router;

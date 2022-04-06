@@ -5,8 +5,6 @@ const catchAsync = require('../utils/catchAsync');
 const { pageMetaService } = require('../services');
 
 
-
-
 const getPageMeta = catchAsync(async (req, res) => {
     const pageMeta = await pageMetaService.getPageMeta(req.params.type);
     if (!pageMeta) {
@@ -31,9 +29,6 @@ const createPageMeta = catchAsync(async (req, res) => {
     const pageMeta = await pageMetaService.updatePageMeta(req);
     res.status(httpStatus.CREATED).send(pageMeta);
   });
-
-
-
 
 module.exports = {
     createPageMeta,

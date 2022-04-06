@@ -1,5 +1,5 @@
 const httpStatus = require('http-status');
-const { HomePage,PageMeta } = require('../models');
+const { HomePage, PageMeta } = require('../models');
 const ApiError = require('../utils/ApiError');
 
 /**
@@ -7,7 +7,7 @@ const ApiError = require('../utils/ApiError');
  * @param {{string}} type
  * @returns {Promise<HomePage>}
  */
- const getHomePageSectionById = async (id) => {
+  const getHomePageSectionById = async (id) => {
     return HomePage.findById(id);
   };
 
@@ -19,8 +19,6 @@ const ApiError = require('../utils/ApiError');
   const sections = await HomePage.find();
   return sections;
 };
-
-
 
   /**
  * Create  HomePage
@@ -34,7 +32,6 @@ const createHomePageSection = async (homePageSectionBody) => {
     return HomePage.create(homePageSectionBody);
   };
 
-
   /**
  * Create  HomePage
  * @param {Object} PageMetaBody
@@ -46,8 +43,6 @@ const createHomePageSection = async (homePageSectionBody) => {
     // }
     return PageMeta.create(PageMetaBody);
   };
-
-
 
   /**
  * Update Home Page Section

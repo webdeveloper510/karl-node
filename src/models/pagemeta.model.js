@@ -1,25 +1,17 @@
 const mongoose = require('mongoose');
 const { toJSON, paginate } = require('./plugins');
 
-
-
-
-
 const pageMetaSchema = mongoose.Schema(
   {
-    metatitle:{
+    metaTitle:{
       type:String
     },
-    metadescription:{
+    metaDescription:{
       type:String
     },
     canonical:{
       type:String
-    },
-    type:{
-        type:String
     }
-
   },
   {
     timestamps: true,
@@ -28,9 +20,6 @@ const pageMetaSchema = mongoose.Schema(
 
 pageMetaSchema.plugin(toJSON);
 pageMetaSchema.plugin(paginate);
-
-
-
 
 /**
  * @typedef Section
