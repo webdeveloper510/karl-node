@@ -44,7 +44,7 @@ const destinationSchema = mongoose.Schema(
     type : String,
     required : true
   },
-  showOnHomePage : {
+  shownOnDashboard : {
     type : Boolean,
     default : true
   }

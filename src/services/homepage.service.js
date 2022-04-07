@@ -62,9 +62,11 @@ const updateHomePageSection = async (req) => {
 };
 
 
-// const showHomePageDestionation = async (req) => {
-//   const section = await getHomePageSectionById(req.body.id);
-// }
+const showHomePageDestionation = async (req) => {
+  const { shownOnDashboard } = req.body;
+  const data = await Destination.find({shownOnDashboard : shownOnDashboard})
+  return data;
+}
 
 
 
@@ -72,5 +74,6 @@ const updateHomePageSection = async (req) => {
     listHomePageSections,
     getHomePageSectionById,
     createHomePageSection,
-    updateHomePageSection
+    updateHomePageSection,
+    showHomePageDestionation
   };
