@@ -2,16 +2,14 @@ const express = require('express');
 const pageMetaController = require('../../controllers/pagemeta.controller');
 const router = express.Router();
 
-
 router.route('/list').get(pageMetaController.listPageMeta);
 router.route('/:type').get(pageMetaController.getPageMeta);
-// router.get('/section2', homepageController.getSection2);
-// router.get('/section3', homepageController.getSection3);
 router.route('/createMeta').post(pageMetaController.createPageMeta);
 router.route('/updateMeta').post(pageMetaController.updatePageMeta);
+// router.get('/section2', homepageController.getSection2);
+// router.get('/section3', homepageController.getSection3);
 
 module.exports = router;
-
 /**
  * @swagger
  * /pagemeta/createMeta:

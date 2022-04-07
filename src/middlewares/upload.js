@@ -9,8 +9,7 @@ const storage = multer.diskStorage({
     filename : function(req, file, cb){
         const extention = file.originalname.substr(file.originalname.lastIndexOf('.'));
         cb(null, file.filename +'_'+Date.now() + extention);
-    },
-
+    }
 });
 
 const filefilter = (req, file, cb) => {

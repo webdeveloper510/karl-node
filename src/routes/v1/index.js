@@ -6,6 +6,7 @@ const homepageRoute = require('./homepage.route');
 const destinationRoute = require('./destination.route');
 const holidayRoute = require('./holiday.route');
 const pageMetaRoute = require('./pagemeta.route');
+const uploadFile = require('./uploadFile.route');
 const config = require('../../config/config');
 
 const router = express.Router();
@@ -39,6 +40,10 @@ const defaultRoutes = [
     path: '/pagemeta',
     route: pageMetaRoute,
   },
+  {
+    path: '/upload',
+    route: uploadFile
+  }
 ];
 
 //const devRoutes = [

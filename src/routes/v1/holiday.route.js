@@ -5,29 +5,19 @@ const holidayController = require('../../controllers/holiday.controller');
 const auth = require('../../middlewares/auth');
 const router = express.Router();
 
-
 router.route('/list').get(holidayController.getHolidayList);
-
 router.route('/:id').get(holidayController.getHoliday);
+router.route('/name/:name').get(holidayController.getHolidayByName);
+router.route('/:id/sections').get(holidayController.getHolidaySections);
+router.route('/:name/sectionsByName').get(holidayController.getHolidaySectionsFromName);
+router.route('/section/:sectionId').get(holidayController.getHolidaySection);
+router.route('/addsection').post(holidayController.createHolidaySection);
+router.route('/create').post(holidayController.createHoliday);
+router.route('/update').post(holidayController.updateHoliday);
+router.route('/updateSection').post(holidayController.updateHolidaySection);
+router.route('/holidayMeta/:id').get(holidayController.getHolidayMeta);
 // router.get('/section2', homepageController.getSection2);
 // router.get('/section3', homepageController.getSection3);
-router.route('/name/:name').get(holidayController.getHolidayByName);
-
-router.route('/:id/sections').get(holidayController.getHolidaySections);
-
-router.route('/:name/sectionsByName').get(holidayController.getHolidaySectionsFromName);
-
-router.route('/section/:sectionId').get(holidayController.getHolidaySection);
-
-router.route('/addsection').post(holidayController.createHolidaySection);
-
-router.route('/create').post(holidayController.createHoliday);
-
-router.route('/update').post(holidayController.updateHoliday);
-
-router.route('/updateSection').post(holidayController.updateHolidaySection);
-
-router.route('/holidayMeta/:id').get(holidayController.getHolidayMeta);
 
 
 module.exports = router;
