@@ -9,7 +9,7 @@ const ApiError = require('../utils/ApiError');
  * @returns {Promise<HomePage>}
  */
   const getHomePageSectionById = async (id) => {
-    return HomePage.findById(id);
+    return await HomePage.findById(id);
   };
 
 /**
@@ -30,7 +30,7 @@ const createHomePageSection = async (homePageSectionBody) => {
     // if (await User.isEmailTaken(userBody.email)) {
     //   throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
     // }
-    return HomePage.create(homePageSectionBody);
+    return await HomePage.create(homePageSectionBody);
   };
 
   /**
@@ -42,7 +42,7 @@ const createHomePageSection = async (homePageSectionBody) => {
     // if (await User.isEmailTaken(userBody.email)) {
     //   throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
     // }
-    return PageMeta.create(PageMetaBody);
+    return await PageMeta.create(PageMetaBody);
   };
 
   /**

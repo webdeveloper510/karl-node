@@ -1,5 +1,5 @@
 const express = require('express');
-// const auth = require('../../middlewares/auth');
+const auth = require('../../middlewares/auth');
 const validate = require('../../middlewares/validate');
 const userValidation = require('../../validations/user.validation');
 const userController = require('../../controllers/user.controller');
@@ -11,9 +11,9 @@ router.route('/')
 .post(validate(userValidation.createUser), userController.createUser)
 // auth('getUsers'), 
 .get(validate(userValidation.getUsers), userController.getUsers);
-
 // auth('manageUsers'), 
-router.route('/update/user').put(validate(userValidation.updateUser), userController.updateUser);
+// validate(userValidation.updateUser), 
+router.route('/update').post(validate(userValidation.updateUser), userController.updateUser);
 
 router
 .route('/:userId')
@@ -157,7 +157,7 @@ module.exports = router;
 
 /**
  * @swagger
- * /update/user:
+ * /users/update:
  *   post:
  *     summary: Update a user
  *     description: Logged in users can only update their own information. Only admins can update other users.
@@ -188,12 +188,13 @@ module.exports = router;
  *                 minLength: 8
  *                 description: At least one number and one letter
  *             example:
+ *               id: 6240d9343dfg434748
  *               name: fake name
  *               email: fake@example.com
  *               password: password1
  *     responses:
- *       "200":
- *         description: OK
+ *       "201":
+ *         description: Updated
  *         content:
  *           application/json:
  *             schema:
@@ -206,7 +207,7 @@ module.exports = router;
  *         $ref: '#/components/responses/Forbidden'
  *       "404":
  *         $ref: '#/components/responses/NotFound'
- *
+ */
 
 
 /**

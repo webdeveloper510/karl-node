@@ -46,7 +46,7 @@ const destinationSchema = mongoose.Schema(
   },
   shownOnDashboard : {
     type : Boolean,
-    default : true
+    default : false
   }
   
   },

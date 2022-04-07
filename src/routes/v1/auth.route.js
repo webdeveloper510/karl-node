@@ -3,8 +3,8 @@ const validate = require('../../middlewares/validate');
 const authValidation = require('../../validations/auth.validation');
 const authController = require('../../controllers/auth.controller');
 // const auth = require('../../middlewares/auth');
-
 const router = express.Router();
+
 router.post('/register', authController.register, validate(authValidation.register));
 router.post('/login',authController.login, validate(authValidation.login));
 // , authController.logout
@@ -18,6 +18,7 @@ router.post('/reset-password', validate(authValidation.resetPassword));
 // router.post('/send-verification-email', auth(), authController.sendVerificationEmail);
 // , authController.verifyEmail
 router.post('/verify-email', validate(authValidation.verifyEmail));
+
 
 module.exports = router;
 

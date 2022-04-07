@@ -22,7 +22,6 @@ const sectionsSchema =
     };
 
 
-
 const homePageSchema = mongoose.Schema(
   {
    background: {
@@ -58,8 +57,6 @@ const homePageSchema = mongoose.Schema(
 
 homePageSchema.plugin(toJSON);
 homePageSchema.plugin(paginate);
-
-
 
 
 /**
