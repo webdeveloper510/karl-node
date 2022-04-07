@@ -38,12 +38,18 @@ const showHomePageDestionation = catchAsync(async (req, res) => {
   res.status(httpStatus.CREATED).send(homePageDestinations);
 });
 
+const showHomePageHolidays = catchAsync(async (req, res) => {
+  const homePageHolidays = await homePageService.showHomePageHoliday(req);
+  res.status(httpStatus.CREATED).send(homePageHolidays);
+});
+
 
 module.exports = {
   listHomePageSections,
   getHomePageSection,
   createHomePageSection,
   updateHomePageSection,
-  showHomePageDestionation
+  showHomePageDestionation,
+  showHomePageHolidays
   };
   

@@ -14,6 +14,7 @@ router.route('/section/:id').get(homepageController.getHomePageSection);
 router.route('/createSection').post(homepageController.createHomePageSection);
 router.route('/updateSection').post(homepageController.updateHomePageSection);
 router.route('/destinations').post(homepageController.showHomePageDestionation);
+router.route('/holidays').post(homepageController.showHomePageHolidays);
 
 
 module.exports = router;
@@ -177,8 +178,8 @@ module.exports = router;
  * @swagger
  * /homepage/destinations:
  *   post:
- *     summary: destination data show if showOnDashboard is true
- *     description: user can use this
+ *     summary: Homepage destinations
+ *     description: Show destination data if showOnDashboard is true
  *     tags: [Sections]
  *     security:
  *       - bearerAuth: []
@@ -210,6 +211,54 @@ module.exports = router;
  *               description1: Save up to £750 per person on selected holidays to Greece, Spain, Portugal & Italy
  *               description2: Great deals, with a price match promise & deposits from £30, say hello to holidays that make you smile
  *               shownOnDashboard : true 
+ *     responses:
+ *       "201":
+ *         description: Data Fetched
+ *         content:
+ *           application/json:
+ *             schema:
+ *                $ref: '#/components/schemas/HomePage'
+ *       "403":
+ *         $ref: '#/components/responses/Forbidden'
+ */
+
+/**
+ * @swagger
+ * /homepage/holidays:
+ *   post:
+ *     summary: Homepage holidays
+ *     description: Show holidays data if showOnDashboard is true
+ *     tags: [Sections]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - title
+ *             properties:
+ *               background:
+ *                 type: string
+ *               title:
+ *                 type: string
+ *               description1:
+ *                 type: string
+ *               type:
+ *                 type: string
+ *               description2:
+ *                  type: string
+ *               sections:
+ *                  type: array
+ *             example:
+ *               background: fake name
+ *               title: Hello Holidays
+ *               type: section1
+ *               description1: Save up to £750 per person on selected holidays to Greece, Spain, Portugal & Italy
+ *               description2: Great deals, with a price match promise & deposits from £30, say hello to holidays that make you smile
+ *               shownOnDashboard : true
  *     responses:
  *       "201":
  *         description: Data Fetched

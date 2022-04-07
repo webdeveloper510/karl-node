@@ -5,7 +5,6 @@ const catchAsync = require('../utils/catchAsync');
 const { holidayService } = require('../services');
 
 
-
 const getHolidayList = catchAsync(async (req, res) => {
   const holidays = await holidayService.getHolidayList();
   if (!holidays) {
@@ -13,6 +12,7 @@ const getHolidayList = catchAsync(async (req, res) => {
   }
   res.send(holidays);
 });
+
 
 const getHoliday = catchAsync(async (req, res) => {
     const holiday = await holidayService.getHolidayById(req.params.id);
@@ -23,7 +23,7 @@ const getHoliday = catchAsync(async (req, res) => {
 });
 
 
-const getHolidayByName = catchAsync(async (req,res)=>{
+const getHolidayByName = catchAsync(async (req,res) => {
   console.log("here")
   const holiday = await holidayService.getHolidayByName(req.params.name);
     if (!holiday) {
@@ -33,17 +33,17 @@ const getHolidayByName = catchAsync(async (req,res)=>{
 })
 
 
-
-
 const createHoliday = catchAsync(async (req, res) => {
     const holiday = await holidayService.createHoliday(req.body);
     res.status(httpStatus.CREATED).send(holiday);
-  });
+});
+
 
 const updateHoliday = catchAsync(async (req, res) => {
   const holiday = await holidayService.updateHoliday(req);
   res.status(httpStatus.CREATED).send(holiday);
 });
+
 
 const createHolidaySection = catchAsync(async (req, res) => {
   const holidaySection = await holidayService.createHolidaySection(req.body);
@@ -60,7 +60,6 @@ const getHolidaySections = catchAsync(async (req, res) => {
 });
 
 
-
 const getHolidaySectionsFromName = catchAsync(async (req, res) => {
   const holidaySections = await holidayService.getHolidaySectionsFromName(req.params.name);
   if (!holidaySections) {
@@ -68,6 +67,7 @@ const getHolidaySectionsFromName = catchAsync(async (req, res) => {
   }
   res.send(holidaySections);
 });
+
 
 const getHolidaySection = catchAsync(async (req, res) => {
   const holidaySection = await holidayService.getHolidaySection(req.params.sectionId);
@@ -83,6 +83,11 @@ const updateHolidaySection = catchAsync(async (req, res) => {
   res.status(httpStatus.CREATED).send(holidaySection);
 });
 
+const getHolidayMeta = catchAsync(async (req, res) => {
+  const holidayMeta = await holidayService.getHolidayMeta(req.params.id);
+  res.status(httpStatus.CREATED).send(holidayMeta);
+});
+
 
 module.exports = {
     getHolidayList,
@@ -94,6 +99,7 @@ module.exports = {
     createHolidaySection,
     getHolidaySections,
     getHolidaySection,
-    updateHolidaySection
-  };
+    updateHolidaySection,
+    getHolidayMeta
+};
   

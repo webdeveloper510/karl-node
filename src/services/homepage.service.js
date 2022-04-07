@@ -1,5 +1,5 @@
 const httpStatus = require('http-status');
-const { HomePage, PageMeta, Destination } = require('../models');
+const { HomePage, PageMeta, Destination, Holiday } = require('../models');
 
 const ApiError = require('../utils/ApiError');
 
@@ -26,7 +26,7 @@ const ApiError = require('../utils/ApiError');
  * @param {Object} homePageBody
  * @returns {Promise<HomePage>}
  */
-const createHomePageSection = async (homePageSectionBody) => {
+  const createHomePageSection = async (homePageSectionBody) => {
     // if (await User.isEmailTaken(userBody.email)) {
     //   throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
     // }
@@ -64,16 +64,21 @@ const updateHomePageSection = async (req) => {
 
 const showHomePageDestionation = async (req) => {
   const { shownOnDashboard } = req.body;
-  const data = await Destination.find({shownOnDashboard : shownOnDashboard})
-  return data;
+  return await Destination.find({shownOnDashboard : shownOnDashboard});
 }
 
 
+const showHomePageHoliday = async (req) => {
+  const { shownOnDashboard } = req.body;
+  return await Holiday.find({shownOnDashboard : shownOnDashboard});
+}
 
-  module.exports = {
-    listHomePageSections,
-    getHomePageSectionById,
-    createHomePageSection,
-    updateHomePageSection,
-    showHomePageDestionation
-  };
+
+module.exports = {
+  listHomePageSections,
+  getHomePageSectionById,
+  createHomePageSection,
+  updateHomePageSection,
+  showHomePageDestionation,
+  showHomePageHoliday
+};

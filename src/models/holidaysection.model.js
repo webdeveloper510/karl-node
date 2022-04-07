@@ -2,8 +2,7 @@ const mongoose = require('mongoose');
 const { toJSON, paginate } = require('./plugins');
 
 
-const subsectionsSchema = 
-    {
+const subsectionsSchema = {
         title: {
           type: String,
           required: false,
@@ -20,7 +19,7 @@ const subsectionsSchema =
           type:Number,
           required: false,
         },
-    };
+};
 
 
 const holidaySectionsSchema = mongoose.Schema(
@@ -45,32 +44,24 @@ const holidaySectionsSchema = mongoose.Schema(
           required: false,
         },
         holiday:{
-           
             type: mongoose.SchemaTypes.ObjectId,
             ref: 'Holidays',
             required: false,
-              
         },
         sections:{
             type:[subsectionsSchema],
             required:false  
-        },
-        
-        
+        },   
     }
 );
 
 
 holidaySectionsSchema.plugin(toJSON);
 holidaySectionsSchema.plugin(paginate);
+/**
+* @typedef Section
+*/
+const HolidaySection = mongoose.model('HolidaySections', holidaySectionsSchema);
     
-    
-    
-    
-    /**
-     * @typedef Section
-     */
-    const HolidaySection = mongoose.model('HolidaySections', holidaySectionsSchema);
-    
-    module.exports = HolidaySection;
+module.exports = HolidaySection;
     

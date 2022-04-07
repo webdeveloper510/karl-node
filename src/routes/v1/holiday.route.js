@@ -1,61 +1,35 @@
 const express = require('express');
 const validate = require('../../middlewares/validate');
 const authValidation = require('../../validations/auth.validation');
-const holidayController = require('../../controllers/holiday.controller')
+const holidayController = require('../../controllers/holiday.controller');
 const auth = require('../../middlewares/auth');
-
 const router = express.Router();
 
 
+router.route('/list').get(holidayController.getHolidayList);
 
-router
-  .route('/list')
-.get(holidayController.getHolidayList);
-
-
-router
-  .route('/:id')
-.get(holidayController.getHoliday);
+router.route('/:id').get(holidayController.getHoliday);
 // router.get('/section2', homepageController.getSection2);
 // router.get('/section3', homepageController.getSection3);
+router.route('/name/:name').get(holidayController.getHolidayByName);
 
-router
-  .route('/name/:name')
-.get(holidayController.getHolidayByName);
+router.route('/:id/sections').get(holidayController.getHolidaySections);
 
+router.route('/:name/sectionsByName').get(holidayController.getHolidaySectionsFromName);
 
-router
-  .route('/:id/sections')
-.get(holidayController.getHolidaySections);
+router.route('/section/:sectionId').get(holidayController.getHolidaySection);
 
+router.route('/addsection').post(holidayController.createHolidaySection);
 
-router
-  .route('/:name/sectionsByName')
-.get(holidayController.getHolidaySectionsFromName);
+router.route('/create').post(holidayController.createHoliday);
 
+router.route('/update').post(holidayController.updateHoliday);
 
-router
-  .route('/section/:sectionId')
-.get(holidayController.getHolidaySection);
+router.route('/updateSection').post(holidayController.updateHolidaySection);
+
+router.route('/holidayMeta/:id').get(holidayController.getHolidayMeta);
 
 
-router
-  .route('/addsection')
-.post(holidayController.createHolidaySection);
-
-router
-  .route('/create')
-.post(holidayController.createHoliday);
-
-
-router
-  .route('/update')
-.post(holidayController.updateHoliday);
-
-
-router
-  .route('/updateSection')
-.post(holidayController.updateHolidaySection);
 module.exports = router;
 
 /**
@@ -76,27 +50,27 @@ module.exports = router;
  *             required:
  *               - title
  *             properties:
- *               metatitle: 
- *                 type: string
- *               metadescription:
- *                 type: string
- *               canonical: 
- *                 type: string
  *               title:
  *                 type: string
  *               slides:
  *                 type: array
  *               type:
  *                 type: string
+ *               metaTitle: 
+ *                 type: string
+ *               metaDescription:
+ *                 type: string
+ *               canonical: 
+ *                 type: string
  *               sections:
  *                 type: array
  *             example:
  *               slides: ['https://picsum.photos/id/1015/1000/400/']
- *               metattitle: testing
- *               metadescription: testing desc
- *               canonical: url
  *               title: Ibiza
  *               type: testing
+ *               metaTitle: testing
+ *               metaDescription: testing desc
+ *               canonical: url
  *               sections: [{title,description,image,percentage,type}]
  *     responses:
  *       "201":
@@ -183,17 +157,17 @@ module.exports = router;
  *             properties:
  *               id:
  *                 type: string
- *               metatitle:
- *                 type: string
- *               metadescription:
- *                 type: string
- *               canonical: 
- *                 type: string
  *               title:
  *                 type: string
  *               slides:
  *                 type: array
  *               type:
+ *                 type: string
+ *               metaTitle:
+ *                 type: string
+ *               metaDescription:
+ *                 type: string
+ *               canonical: 
  *                 type: string
  *               sections:
  *                 type: array
@@ -452,3 +426,32 @@ module.exports = router;
  *         $ref: '#/components/responses/Forbidden'
  */
  
+/**
+ * @swagger
+ * /holiday/holidayMeta/{id}:
+ *   get:
+ *     summary: Get Holiday Page Meta
+ *     description: Get holiday page meta
+ *     tags: [Destinations]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           id: string
+ *         description: Type
+ *     responses:
+ *       "200":
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *                $ref: '#/components/schemas/Holiday'
+ *       "403":
+ *         $ref: '#/components/responses/Forbidden'
+ *       "404":
+ *         $ref: '#/components/responses/NotFound'
+ * 
+ */

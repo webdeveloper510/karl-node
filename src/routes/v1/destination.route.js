@@ -432,8 +432,8 @@ module.exports = router;
  * @swagger
  * /destination/destinationMeta/{id}:
  *   get:
- *     summary: Get a Destination Meta
- *     description: Get particular destination meta
+ *     summary: Destination Page Meta
+ *     description: Get destination page meta
  *     tags: [Destinations]
  *     security:
  *       - bearerAuth: []

@@ -1,5 +1,5 @@
 const httpStatus = require('http-status');
-const { Destination,Section } = require('../models');
+const { Destination, Section } = require('../models');
 const ApiError = require('../utils/ApiError');
 const mongoose = require('mongoose');
 
@@ -23,7 +23,7 @@ const mongoose = require('mongoose');
 };
   
 
-  /**
+/**
  * Get sections by destinationId
  * @param {{string}} id
  * @returns {Promise<Destination>}
@@ -33,7 +33,7 @@ const mongoose = require('mongoose');
 };
 
 
-  /**
+ /**
  * Get sections by destinationId
  * @param {{string}} name
  * @returns {Promise<Destination>}
@@ -45,7 +45,7 @@ const mongoose = require('mongoose');
 
 
 
- /**
+/**
  * Get destination section by  sectionId
  * @param {{string}} id
  * @param {{string}} sectionId
@@ -56,7 +56,7 @@ const mongoose = require('mongoose');
   };
 
 
-  /**
+/**
  * Query for users
  * @returns {Promise<HomePage>}
  */
@@ -66,7 +66,7 @@ const mongoose = require('mongoose');
 };
 
 
-  /**
+/**
  * Create  Section1
  * @param {Object} destinationBody
  * @returns {Promise<Destination>}
@@ -78,7 +78,7 @@ const createDestination = async (destinationBody) => {
     return await Destination.create(destinationBody);
   };
 
-  /**
+/**
  * Update Destination
  * @returns {Promise<Destination>}
  */
@@ -95,7 +95,7 @@ const createDestination = async (destinationBody) => {
   };
 
 
-  /**
+/**
  * Update Destination Section
  * @returns {Promise<Section>}
  */
@@ -111,7 +111,8 @@ const createDestination = async (destinationBody) => {
     return destinationSection;
   };
 
-    /**
+
+/**
  * Create  Destination Section
  * @param {Object} destinationSectionBody
  * @returns {Promise<Section>}
@@ -128,16 +129,17 @@ const getDestinationMeta = async (id) => {
   return await Destination.findById(id).select('metaTitle metaDescription canonical');
 }
 
-  module.exports = {
-    getDestinationList,
-    getDestinationById,
-    createDestination,
-    getDestinationByName,
-    updateDestination,
-    getDestinationSectionsFromName,
-    createDestinationSection,
-    getDestinationSections,
-    getDestinationSection,
-    updateDestinationSection,
-    getDestinationMeta
-  };
+
+module.exports = {
+  getDestinationList,
+  getDestinationById,
+  createDestination,
+  getDestinationByName,
+  updateDestination,
+  getDestinationSectionsFromName,
+  createDestinationSection,
+  getDestinationSections,
+  getDestinationSection,
+  updateDestinationSection,
+  getDestinationMeta
+};

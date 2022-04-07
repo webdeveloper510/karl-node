@@ -5,7 +5,6 @@ const catchAsync = require('../utils/catchAsync');
 const { destinationService } = require('../services');
 
 
-
 const getDestinationList = catchAsync(async (req, res) => {
   const destinations = await destinationService.getDestinationList();
   if (!destinations) {
@@ -22,7 +21,6 @@ const getDestination = catchAsync(async (req, res) => {
     res.send(destination);
 });
 
-
 const getDestinationByName = catchAsync(async (req,res)=> {
   console.log("here")
   const destination = await destinationService.getDestinationByName(req.params.name);
@@ -31,7 +29,6 @@ const getDestinationByName = catchAsync(async (req,res)=> {
     }
     res.send(destination);
 })
-
 
 const createDestination = catchAsync(async (req, res) => {
     const destination = await destinationService.createDestination(req.body);
@@ -49,7 +46,6 @@ const createDestinationSection = catchAsync(async (req, res) => {
   res.status(httpStatus.CREATED).send(destinationSection);
 });
 
-
 const getDestinationSections = catchAsync(async (req, res) => {
   const destinationSections = await destinationService.getDestinationSections(req.params.id);
   if (!destinationSections) {
@@ -57,7 +53,6 @@ const getDestinationSections = catchAsync(async (req, res) => {
   }
   res.send(destinationSections);
 });
-
 
 const getDestinationSectionsFromName = catchAsync(async (req, res) => {
   const destinationSections = await destinationService.getDestinationSectionsFromName(req.params.name);
@@ -75,12 +70,10 @@ const getDestinationSection = catchAsync(async (req, res) => {
   res.send(destinationSection);
 });
 
-
 const updateDestinationSection = catchAsync(async (req, res) => {
   const destinationSection = await destinationService.updateDestinationSection(req);
   res.status(httpStatus.CREATED).send(destinationSection);
 });
-
 
 const getDestinationMeta = catchAsync(async (req, res) => {
   const destinationMeta = await destinationService.getDestinationMeta(req.params.id);

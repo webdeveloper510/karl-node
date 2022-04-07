@@ -1,17 +1,17 @@
 const httpStatus = require('http-status');
-const { Holiday,HolidaySection } = require('../models');
+const { Holiday, HolidaySection } = require('../models');
 const ApiError = require('../utils/ApiError');
 const mongoose = require('mongoose');
-
 
 /**
  * Get section by type
  * @param {{string}} id
  * @returns {Promise<Holiday>}
  */
- const getHolidayById = async (id) => {
-    return Holiday.findById(id);
+  const getHolidayById = async (id) => {
+    return await Holiday.findById(id);
   };
+
 
 /**
  * Get destination by name
@@ -19,8 +19,8 @@ const mongoose = require('mongoose');
  * @returns {Promise<Holiday>}
  */
  const getHolidayByName = async (name) => {
-  return Holiday.findOne({title:name});
-};
+  return await Holiday.findOne({title:name});
+ };
   
 
   /**
@@ -29,8 +29,8 @@ const mongoose = require('mongoose');
  * @returns {Promise<Holiday>}
  */
  const getHolidaySections = async (id) => {
-  return HolidaySection.find({holiday:mongoose.Types.ObjectId(id)});
-};
+  return await HolidaySection.find({holiday:mongoose.Types.ObjectId(id)});
+ };
 
 
   /**
@@ -40,9 +40,8 @@ const mongoose = require('mongoose');
  */
    const getHolidaySectionsFromName = async (name) => {
     //return Destination.findOne({title:name});
-    return HolidaySection.find({holiday:name});
-  };
-
+    return await HolidaySection.find({holiday:name});
+   };
 
 
  /**
@@ -52,7 +51,7 @@ const mongoose = require('mongoose');
  * @returns {Promise<Holiday>}
  */
   const getHolidaySection = async (id) => {
-    return HolidaySection.findById(id);
+    return await HolidaySection.findById(id);
   };
 
 
@@ -60,10 +59,10 @@ const mongoose = require('mongoose');
  * Query for users
  * @returns {Promise<HomePage>}
  */
- const getHolidayList = async (filter, options) => {
-  const holidays = await Holiday.find();
-  return holidays;
-};
+  const getHolidayList = async (filter, options) => {
+   const holidays = await Holiday.find();
+   return holidays;
+  };
 
 
   /**
@@ -71,12 +70,12 @@ const mongoose = require('mongoose');
  * @param {Object} destinationBody
  * @returns {Promise<Holiday>}
  */
-const createHoliday = async (holidayBody) => {
+ const createHoliday = async (holidayBody) => {
     // if (await User.isEmailTaken(userBody.email)) {
     //   throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
     // }
-    return Holiday.create(holidayBody);
-  };
+  return await Holiday.create(holidayBody);
+ };
 
   /**
  * Update Destination
@@ -93,7 +92,6 @@ const createHoliday = async (holidayBody) => {
     await holiday.save();
     return holiday;
   };
-
 
 
   /**
@@ -124,19 +122,21 @@ const createHolidaySection = async (holidaySectionBody) => {
   return HolidaySection.create(holidaySectionBody);
 };
 
+
+const getHolidayMeta = async (id) => {
+  return await Holiday.findById(id).select('metaTitle metaDescription canonical');
+}
   
-
-
-
-  module.exports = {
-    getHolidayList,
-    getHolidayById,
-    createHoliday,
-    getHolidayByName,
-    updateHoliday,
-    getHolidaySectionsFromName,
-    createHolidaySection,
-    getHolidaySections,
-    getHolidaySection,
-    updateHolidaySection
-  };
+module.exports = {
+  getHolidayList,
+  getHolidayById,
+  createHoliday,
+  getHolidayByName,
+  updateHoliday,
+  getHolidaySectionsFromName,
+  createHolidaySection,
+  getHolidaySections,
+  getHolidaySection,
+  updateHolidaySection,
+  getHolidayMeta
+};
