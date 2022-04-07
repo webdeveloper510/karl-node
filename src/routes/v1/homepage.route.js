@@ -3,6 +3,7 @@ const validate = require('../../middlewares/validate');
 const authValidation = require('../../validations/auth.validation');
 const homepageController = require('../../controllers/homepage.controller');
 const auth = require('../../middlewares/auth');
+const uploadFile = require('../../middlewares/upload');
 
 const router = express.Router();
 
