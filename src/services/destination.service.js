@@ -117,13 +117,16 @@ const createDestination = async (destinationBody) => {
  * @returns {Promise<Section>}
  */
 const createDestinationSection = async (destinationSectionBody) => {
-  console.log(destinationSectionBody)
   // if (await User.isEmailTaken(userBody.email)) {
   //   throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
   // }
-  // return await Section.create(destinationSectionBody);
+  return await Section.create(destinationSectionBody);
 };
 
+
+const getDestinationMeta = async (id) => {
+  return await Destination.findById(id).select('metaTitle metaDescription canonical');
+}
 
   module.exports = {
     getDestinationList,
@@ -135,5 +138,6 @@ const createDestinationSection = async (destinationSectionBody) => {
     createDestinationSection,
     getDestinationSections,
     getDestinationSection,
-    updateDestinationSection
+    updateDestinationSection,
+    getDestinationMeta
   };

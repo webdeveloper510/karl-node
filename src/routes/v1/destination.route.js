@@ -28,6 +28,8 @@ router.route('/update').post(destinationController.updateDestination);
 
 router.route('/updateSection').post(destinationController.updateDestinationSection);
 
+router.route('/destinationMeta/:id').get(destinationController.getDestinationMeta);
+
 
 module.exports = router;
 
@@ -426,3 +428,32 @@ module.exports = router;
  *         $ref: '#/components/responses/Forbidden'
  */
  
+/**
+ * @swagger
+ * /destination/destinationMeta/{id}:
+ *   get:
+ *     summary: Get a Destination Meta
+ *     description: Get particular destination meta
+ *     tags: [Destinations]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           id: string
+ *         description: Type
+ *     responses:
+ *       "200":
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *                $ref: '#/components/schemas/Destination'
+ *       "403":
+ *         $ref: '#/components/responses/Forbidden'
+ *       "404":
+ *         $ref: '#/components/responses/NotFound'
+ * 
+ */

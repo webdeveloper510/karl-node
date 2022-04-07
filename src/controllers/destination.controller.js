@@ -82,6 +82,12 @@ const updateDestinationSection = catchAsync(async (req, res) => {
 });
 
 
+const getDestinationMeta = catchAsync(async (req, res) => {
+  const destinationMeta = await destinationService.getDestinationMeta(req.params.id);
+  res.status(httpStatus.CREATED).send(destinationMeta);
+})
+
+
 module.exports = {
     getDestinationList,
     getDestination,
@@ -92,6 +98,7 @@ module.exports = {
     createDestinationSection,
     getDestinationSections,
     getDestinationSection,
-    updateDestinationSection
+    updateDestinationSection,
+    getDestinationMeta
   };
   

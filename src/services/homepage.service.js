@@ -62,9 +62,9 @@ const updateHomePageSection = async (req) => {
 };
 
 
-const showHomePageDestionation = async (req) => {
-  const section = await getHomePageSectionById(req.body.id);
-}
+// const showHomePageDestionation = async (req) => {
+//   const section = await getHomePageSectionById(req.body.id);
+// }
 
 
 
