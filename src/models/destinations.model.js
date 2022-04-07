@@ -43,6 +43,10 @@ const destinationSchema = mongoose.Schema(
   canonical : {
     type : String,
     required : true
+  },
+  showOnHomePage : {
+    type : Boolean,
+    default : true
   }
   
   },

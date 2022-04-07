@@ -3,6 +3,7 @@ const validate = require('../../middlewares/validate');
 const authValidation = require('../../validations/auth.validation');
 const destinationController = require('../../controllers/destination.controller');
 const auth = require('../../middlewares/auth');
+
 const router = express.Router();
 
 
@@ -26,6 +27,7 @@ router.route('/create').post(destinationController.createDestination);
 router.route('/update').post(destinationController.updateDestination);
 
 router.route('/updateSection').post(destinationController.updateDestinationSection);
+
 
 module.exports = router;
 
@@ -62,12 +64,11 @@ module.exports = router;
  *               sections:
  *                 type: array
  *             example:
- *               slides: ['https://picsum.photos/id/1015/1000/400/']
- *               metattitle: testing
- *               metadescription: testing desc
- *               canonical: url
  *               title: Ibiza
- *               type: testing
+ *               slides: ['https://picsum.photos/id/1015/1000/400/']
+ *               metaTitle: testing
+ *               metaDescription: testing desc
+ *               canonical: url
  *               sections: [{title,description,image,percentage,type}]
  *     responses:
  *       "201":
@@ -169,10 +170,12 @@ module.exports = router;
  *               sections:
  *                 type: array
  *             example:
- *               id: 345345346356
- *               slides: ['https://picsum.photos/id/1015/1000/400/']
+ *               id: 624e0c92e14743163827d974
  *               title: Ibiza
- *               type: testing
+ *               slides: ['https://picsum.photos/id/1015/1000/400/']
+ *               metaTitle: metaTitleTest
+ *               metaDescription : metaDescTest
+ *               canonical : canonicalTest
  *               sections: [{title,description,image,percentage,type}]
  *     responses:
  *       "201":

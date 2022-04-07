@@ -33,11 +33,17 @@ const updateHomePageSection = catchAsync(async (req, res) => {
 });
 
 
+const showHomePageDestionation = catchAsync(async (req, res) => {
+  const homePageDestinations = await homePageService.showHomePageDestionation(req);
+  res.status(httpStatus.CREATED).send(homePageDestinations);
+});
+
+
 module.exports = {
   listHomePageSections,
   getHomePageSection,
   createHomePageSection,
-  updateHomePageSection
-  
+  updateHomePageSection,
+  showHomePageDestionation
   };
   

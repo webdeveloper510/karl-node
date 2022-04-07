@@ -1,5 +1,6 @@
 const httpStatus = require('http-status');
-const { HomePage, PageMeta } = require('../models');
+const { HomePage, PageMeta, Destination } = require('../models');
+
 const ApiError = require('../utils/ApiError');
 
 /**
@@ -59,6 +60,11 @@ const updateHomePageSection = async (req) => {
   await section.save();
   return section;
 };
+
+
+const showHomePageDestionation = async (req) => {
+  const section = await getHomePageSectionById(req.body.id);
+}
 
 
 

@@ -1,6 +1,5 @@
 const httpStatus = require('http-status');
 const { Destination,Section } = require('../models');
-console.log(Section)
 const ApiError = require('../utils/ApiError');
 const mongoose = require('mongoose');
 
@@ -118,10 +117,11 @@ const createDestination = async (destinationBody) => {
  * @returns {Promise<Section>}
  */
 const createDestinationSection = async (destinationSectionBody) => {
+  console.log(destinationSectionBody)
   // if (await User.isEmailTaken(userBody.email)) {
   //   throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
   // }
-  return await Section.create(destinationSectionBody);
+  // return await Section.create(destinationSectionBody);
 };
 
 

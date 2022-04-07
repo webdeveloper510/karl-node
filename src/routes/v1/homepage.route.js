@@ -17,6 +17,8 @@ router.route('/createSection').post(homepageController.createHomePageSection);
 
 router.route('/updateSection').post(homepageController.updateHomePageSection);
 
+router.route('/destinations').get(homepageController.showHomePageDestionation);
+
 
 module.exports = router;
 
