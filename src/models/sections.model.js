@@ -2,8 +2,7 @@ const mongoose = require('mongoose');
 const { toJSON, paginate } = require('./plugins');
 
 
-const subsectionsSchema = 
-    {
+const subsectionsSchema = {
         title: {
           type: String,
           required: false,
@@ -20,7 +19,7 @@ const subsectionsSchema =
           type:Number,
           required: false,
         },
-    };
+};
 
 
 const sectionsSchema = mongoose.Schema(
@@ -52,23 +51,19 @@ const sectionsSchema = mongoose.Schema(
         sections:{
             type:[subsectionsSchema],
             required:false  
-        },
-        
-        
+        }
     }
 );
 
 
-    sectionsSchema.plugin(toJSON);
-    sectionsSchema.plugin(paginate);
+sectionsSchema.plugin(toJSON);
+sectionsSchema.plugin(paginate);
     
     
+/**
+* @typedef Section
+*/
+const Section = mongoose.model('Sections', sectionsSchema);
     
-    
-    /**
-     * @typedef Section
-     */
-    const Section = mongoose.model('Sections', sectionsSchema);
-    
-    module.exports = Section;
+module.exports = Section;
     

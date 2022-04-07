@@ -6,5 +6,5 @@ const uploadImage = async (id) => {
 };
 
 module.exports = {
-    uploadImage
+   uploadImage
 }

@@ -4,7 +4,7 @@ const catchAsync = require('../utils/catchAsync');
 const { uploadFileService }  = require('../services');
 
 const uploadImage = catchAsync(async (req, res) => {
-   
+      
 });
 
 

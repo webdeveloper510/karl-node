@@ -15,6 +15,7 @@ router.route('/addsection').post(destinationController.createDestinationSection)
 router.route('/create').post(destinationController.createDestination);
 router.route('/update').post(destinationController.updateDestination);
 router.route('/updateSection').post(destinationController.updateDestinationSection);
+router.route('/destinationMeta').get(destinationController.getAllDestionationMeta)
 router.route('/destinationMeta/:id').get(destinationController.getDestinationMeta);
 // router.get('/section2', homepageController.getSection2);
 // router.get('/section3', homepageController.getSection3);

@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
 const { toJSON, paginate } = require('./plugins');
 
-const sectionsSchema = 
-    {
+const sectionsSchema = {
         title: {
           type: String,
           required: true,
@@ -19,7 +18,7 @@ const sectionsSchema =
           type:Number,
           required: false,
         },
-    };
+};
 
 
 const homePageSchema = mongoose.Schema(
