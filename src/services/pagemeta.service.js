@@ -1,6 +1,6 @@
 const httpStatus = require('http-status');
-const { PageMeta } = require('../models');
 const ApiError = require('../utils/ApiError');
+const { PageMeta } = require('../models');
 
 
 const getPageMetaById = async (id) => {
