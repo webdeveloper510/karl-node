@@ -5,6 +5,7 @@ const holidayController = require('../../controllers/holiday.controller');
 const auth = require('../../middlewares/auth');
 const router = express.Router();
 
+router.route('/holidayListMeta').get(holidayController.getAllHolidaysMeta);
 router.route('/list').get(holidayController.getHolidayList);
 router.route('/:id').get(holidayController.getHoliday);
 router.route('/name/:name').get(holidayController.getHolidayByName);

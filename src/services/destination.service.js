@@ -124,9 +124,12 @@ const createDestinationSection = async (destinationSectionBody) => {
   return await Section.create(destinationSectionBody);
 };
 
-
 const getDestinationMeta = async (id) => {
   return await Destination.findById(id).select('metaTitle metaDescription canonical');
+}
+
+const getAllDestinationMeta = async () => {
+  return await Destination.find({}).select('metaTitle metaDescription canonical');
 }
 
 
@@ -141,5 +144,6 @@ module.exports = {
   getDestinationSections,
   getDestinationSection,
   updateDestinationSection,
-  getDestinationMeta
+  getDestinationMeta,
+  getAllDestinationMeta
 };

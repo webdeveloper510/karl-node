@@ -75,13 +75,13 @@ const updateDestinationSection = catchAsync(async (req, res) => {
   res.status(httpStatus.CREATED).send(destinationSection);
 });
 
-const getAllDestionationMeta = catchAsync(async (req, res) => {
-  const destinationMeta = await destinationService.getDestinationMeta(req);
+const getDestinationMeta = catchAsync(async (req, res) => {
+  const destinationMeta = await destinationService.getDestinationMeta(req.params.id);
   res.status(httpStatus.CREATED).send(destinationMeta);
 })
 
-const getDestinationMeta = catchAsync(async (req, res) => {
-  const destinationMeta = await destinationService.getDestinationMeta(req.params.id);
+const getAllDestinationMeta = catchAsync(async (req, res) => {
+  const destinationMeta = await destinationService.getAllDestinationMeta(req);
   res.status(httpStatus.CREATED).send(destinationMeta);
 })
 
@@ -97,6 +97,7 @@ module.exports = {
     getDestinationSections,
     getDestinationSection,
     updateDestinationSection,
-    getDestinationMeta
+    getDestinationMeta,
+    getAllDestinationMeta
   };
   

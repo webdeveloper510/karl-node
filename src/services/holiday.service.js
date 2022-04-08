@@ -122,9 +122,12 @@ const createHolidaySection = async (holidaySectionBody) => {
   return HolidaySection.create(holidaySectionBody);
 };
 
-
 const getHolidayMeta = async (id) => {
   return await Holiday.findById(id).select('metaTitle metaDescription canonical');
+}
+
+const getAllHolidaysMeta = async () => {
+  return await Holiday.find({}).select('metaTitle metaDescription canonical');
 }
   
 module.exports = {
@@ -138,5 +141,6 @@ module.exports = {
   getHolidaySections,
   getHolidaySection,
   updateHolidaySection,
-  getHolidayMeta
+  getHolidayMeta,
+  getAllHolidaysMeta
 };

@@ -88,6 +88,11 @@ const getHolidayMeta = catchAsync(async (req, res) => {
   res.status(httpStatus.CREATED).send(holidayMeta);
 });
 
+const getAllHolidaysMeta =  catchAsync(async (req, res) => {
+  const holidayMeta = await holidayService.getAllHolidaysMeta(req);
+  res.status(httpStatus.CREATED).send(holidayMeta);
+});
+
 
 module.exports = {
     getHolidayList,
@@ -100,6 +105,7 @@ module.exports = {
     getHolidaySections,
     getHolidaySection,
     updateHolidaySection,
-    getHolidayMeta
+    getHolidayMeta,
+    getAllHolidaysMeta
 };
   
