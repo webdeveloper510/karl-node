@@ -61,10 +61,26 @@ const mongoose = require('mongoose');
  * @returns {Promise<HomePage>}
  */
  const getDestinationList = async (filter) => {
-  let filteredVal = filter.shownOnDashboard ? { shownOnDashboard : { $regex : filter.shownOnDashboard, $options : 'i'} } : {};
-  console.log(filteredVal)
-  const destinations = await Destination.find({...filteredVal});
-  return destinations;
+  let destination=[]
+   const destinations = await Destination.find({...filter});
+
+   destinations.find((value)=>{
+    //  for(i=0; i<destinations.length; i++){
+    //   console.log('test',destinations[i].shownOnDashboard)
+    //   if(destinations[i].shownOnDashboard)
+    //  }
+    if(value.shownOnDashboard==true){
+      // console.log('value',value)
+      // console.log('des',destination)
+      destination.push(value)
+    }
+    
+   })
+   console.log(destination.length)
+  // let filteredVal = filter.shownOnDashboard ? { shownOnDashboard : { $regex : filter.shownOnDashboard, $options : 'i'} } : {};
+  // console.log(filteredVal)
+  return destination;
+  
 };
 
 
