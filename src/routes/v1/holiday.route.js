@@ -446,3 +446,26 @@ module.exports = router;
  *         $ref: '#/components/responses/NotFound'
  * 
  */
+
+/**
+ * @swagger
+ * /holiday/holidayListMeta:
+ *   get:
+ *     summary: holiday meta 
+ *     description: Get list of all holiday meta
+ *     tags: [Destinations]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       "200":
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *                $ref: '#/components/schemas/Destination'
+ *       "403":
+ *         $ref: '#/components/responses/Forbidden'
+ *       "404":
+ *         $ref: '#/components/responses/NotFound'
+ * 
+ */
