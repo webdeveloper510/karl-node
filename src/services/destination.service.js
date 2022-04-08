@@ -60,8 +60,10 @@ const mongoose = require('mongoose');
  * Query for users
  * @returns {Promise<HomePage>}
  */
- const getDestinationList = async (filter, options) => {
-  const destinations = await Destination.find();
+ const getDestinationList = async (filter) => {
+  let filteredVal = filter.shownOnDashboard ? { shownOnDashboard : { $regex : filter.shownOnDashboard, $options : 'i'} } : {};
+  console.log(filteredVal)
+  const destinations = await Destination.find({...filteredVal});
   return destinations;
 };
 
