@@ -10,17 +10,19 @@ module.exports = router;
 * @swagger
 * /upload/images:
 *   post:
-*     summary: Uploads a file.
+*     summary: image upload
+*     description: upload image to database
+*     tags: [File]
 *     consumes:
 *       - multipart/form-data
 *     parameters:
 *       - in: formData
-*         name: upfile
+*         name: uploadfile
 *         type: file
-*         description: The file to upload.
-*    responses:
+*         description: The file to upload
+*   responses:
 *      "201":
-*        description: Data Fetched
+*        description: image uploaded successfully
 *        content:
 *          application/json:
 *            schema:
