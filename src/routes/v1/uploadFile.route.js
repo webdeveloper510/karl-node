@@ -2,7 +2,8 @@ const uploadFileController = require('../../controllers/uploadFile.controller');
 const uploadFileMiddleware = require('../../middlewares/upload');
 const router = require('express').Router();
 
-router.route('/images').post(uploadFileMiddleware.array('image', 20), uploadFileController.uploadImage);
+// uploadFileMiddleware.single('image'), 
+router.route('/images').post(uploadFileController.uploadImage);
 
 module.exports = router;
 
