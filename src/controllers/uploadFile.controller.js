@@ -5,30 +5,21 @@ const path = require('path');
 const fs = require('fs');
 
 const uploadImage = catchAsync(async (req, res) => {
-   if(!req.files){
-      return res.status(400).json({
-         msg : "please upload file"
-      })
-   }
-
-   if(req.files.image.mimetype !== 'image/png' || req.files.image.mimetype !== 'image/jpg' || req.files.image.mimetype !== 'image/jpeg'){
-      return res.status(400).json({
-         msg : 'File format is not valid'
-      })
-   }
-
-   fs.writeFile(path.resolve(`./src/images/${req.files.image.name}`), req.files.image.data, 'utf-8', function(err){
+   let base64Image = req.body.data;
+   const extention = req.body.fileName.substr(req.body.fileName.lastIndexOf('.'));
+   const filePAth = path.join(`./uploads/${req.body.fileName.split('.')[0] + '_'+Date.now()+extention}`)
+   fs.writeFile(path.resolve(`${filePAth}`), base64Image, {encoding: 'base64'}, function(err) {
       if(err){
-         return res.status(200).json({
-            msg : "file upload failed"
+         console.log(err)
+         throw new ApiError(httpStatus.BAD_REQUEST, 'File Upload Failed');
+      }else{
+         const fileUrl = `http://138.68.163.128:3001/${filePAth}`
+         res.status(200).json({
+            msg : "file uploaded",
+            url : fileUrl
          })
       }
-
-      res.status(200).json({
-         msg : "file uploaded successfully"
-      })
-   }); 
-
+  });
 
    // const file = req.files.image;
    // const fileName = req.files.name
