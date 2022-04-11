@@ -6,4 +6,3 @@ module.exports.homePageService = require('./homepage.service');
 module.exports.destinationService = require('./destination.service');
 module.exports.holidayService = require('./holiday.service');
 module.exports.pageMetaService = require('./pagemeta.service');
-module.exports.uploadFileService = require('./uploadFile.service');
