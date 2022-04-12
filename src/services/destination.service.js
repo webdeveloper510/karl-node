@@ -9,7 +9,7 @@ const mongoose = require('mongoose');
  * @param {{string}} id
  * @returns {Promise<Destination>}
  */
- const getDestinationById = async (id) => {
+  const getDestinationById = async (id) => {
     return await Destination.findById(id);
   };
 
@@ -60,21 +60,8 @@ const mongoose = require('mongoose');
  * @returns {Promise<HomePage>}
  */
  const getDestinationList = async (filter) => {
-   console.log(filter)
-  // let destination=[]
-  //  const destinations = await Destination.find({...filter});
-  //  destinations.find((value) => {
-  //   if(value.shownOnDashboard==true){
-  //     destination.push(value)
-  //   }
-  //  })
-
-  let filteredVal = filter ? { shownOnDashboard : { $regex : filter, $options : 'i'} } : {};
-  // console.log(filteredVal)
-  const destinations = await Destination.find({...filteredVal});
-
+  const destinations = await Destination.find(filter);
   return destinations;
-  
 };
 
 
