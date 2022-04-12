@@ -5,12 +5,18 @@ const path = require('path');
 const fs = require('fs');
 
 const uploadImage = catchAsync(async (req, res) => {
-   let base64Image = req.body.data;
-   const extention = req.body.fileName.substr(req.body.fileName.lastIndexOf('.'));
-   const filePAth = path.join(`./uploads/${req.body.fileName.split('.')[0] + '_'+Date.now()+extention}`)
-   fs.writeFile(path.resolve(`${filePAth}`), base64Image, {encoding: 'base64'}, function(err) {
+   const { data, fileName } = req.body;
+   if(!data || !fileName){
+      return res.status(400).json({
+         msg : 'please choose file to upload'
+      })
+   }
+   let base64Image = data;
+   const imageBase64Data = base64Image.split(';base64,').pop();
+   const extention = fileName.substr(fileName.lastIndexOf('.'));
+   const filePAth = path.join(`./uploads/${fileName.split('.')[0] + '_'+Date.now()+extention}`)
+   fs.writeFile(path.resolve(`${filePAth}`), imageBase64Data, {encoding: 'base64'}, function(err) {
       if(err){
-         console.log(err)
          throw new ApiError(httpStatus.BAD_REQUEST, 'File Upload Failed');
       }else{
          const fileUrl = `http://138.68.163.128:3001/${filePAth}`
