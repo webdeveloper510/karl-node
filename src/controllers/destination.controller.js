@@ -6,7 +6,15 @@ const { destinationService } = require('../services');
 
 
 const getDestinationList = catchAsync(async (req, res) => {
-  const destinations = await destinationService.getDestinationList(req.query);
+  let filteredQuery;
+  if(req.query.shownOnDashboard){
+    filteredQuery = req.query.shownOnDashboard === 'true' ? req.query.shownOnDashboard = true : req.query.shownOnDashboard.shownOnDashboard = false;
+  }else{
+    filteredQuery = undefined
+  }
+  console.log(filteredQuery);
+ 
+  const destinations = await destinationService.getDestinationList(filteredQuery);
   if (!destinations) {
     throw new ApiError(httpStatus.NOT_FOUND, 'No destination found');
   }
