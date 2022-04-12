@@ -13,6 +13,8 @@ const { authLimiter } = require('./middlewares/rateLimiter');
 const routes = require('./routes/v1');
 const { errorConverter, errorHandler } = require('./middlewares/error');
 const ApiError = require('./utils/ApiError');
+const fileUplaod = require('express-fileupload');
+const path = require('path');
 
 const app = express();
 
@@ -24,11 +26,16 @@ if (config.env !== 'test') {
 // set security HTTP headers
 app.use(helmet());
 
+// file upload.
+app.use(fileUplaod());
+
 // parse json request body
-app.use(express.json());
+app.use(express.json({limit: '50mb'}));
 
 // parse urlencoded request body
 app.use(express.urlencoded({ extended: true }));
+// console.log(process.cwd())
+app.use('/uploads', express.static(process.cwd() + '/uploads'));
 
 // sanitize request data
 app.use(xss());

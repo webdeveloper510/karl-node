@@ -6,7 +6,13 @@ const { destinationService } = require('../services');
 
 
 const getDestinationList = catchAsync(async (req, res) => {
-  const destinations = await destinationService.getDestinationList(req.query);
+  let filter = {};
+  if(req.query){
+    filter = {...req.query};
+  }else{
+    filter = {}
+  }
+  const destinations = await destinationService.getDestinationList(filter); 
   if (!destinations) {
     throw new ApiError(httpStatus.NOT_FOUND, 'No destination found');
   }

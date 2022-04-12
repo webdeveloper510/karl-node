@@ -9,7 +9,7 @@ const mongoose = require('mongoose');
  * @param {{string}} id
  * @returns {Promise<Destination>}
  */
- const getDestinationById = async (id) => {
+  const getDestinationById = async (id) => {
     return await Destination.findById(id);
   };
 
@@ -38,11 +38,10 @@ const mongoose = require('mongoose');
  * @param {{string}} name
  * @returns {Promise<Destination>}
  */
-   const getDestinationSectionsFromName = async (name) => {
+  const getDestinationSectionsFromName = async (name) => {
     //return Destination.findOne({title:name});
     return await Section.find({destination:name});
   };
-
 
 
 /**
@@ -61,20 +60,8 @@ const mongoose = require('mongoose');
  * @returns {Promise<HomePage>}
  */
  const getDestinationList = async (filter) => {
-  let destination=[]
-   const destinations = await Destination.find({...filter});
-   destinations.find((value) => {
-    if(value.shownOnDashboard==true){
-      // console.log('value',value)
-      // console.log('des',destination)
-      destination.push(value)
-    }
-   })
-   console.log(destination.length)
-  // let filteredVal = filter.shownOnDashboard ? { shownOnDashboard : { $regex : filter.shownOnDashboard, $options : 'i'} } : {};
-  // console.log(filteredVal)
-  return destination;
-  
+  const destinations = await Destination.find(filter);
+  return destinations;
 };
 
 
