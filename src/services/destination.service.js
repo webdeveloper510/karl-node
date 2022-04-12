@@ -11,7 +11,8 @@ const mongoose = require('mongoose');
  */
   const getDestinationById = async (id) => {
     return await Destination.findById(id);
-  };
+  }
+
 
 /**
  * Get destination by name
@@ -21,7 +22,7 @@ const mongoose = require('mongoose');
  const getDestinationByName = async (name) => {
   return await Destination.findOne({title:name});
 };
-  
+
 
 /**
  * Get sections by destinationId
@@ -77,6 +78,7 @@ const createDestination = async (destinationBody) => {
     return await Destination.create(destinationBody);
   };
 
+
 /**
  * Update Destination
  * @returns {Promise<Destination>}
@@ -103,7 +105,7 @@ const createDestination = async (destinationBody) => {
     if (!destinationSection) {
       throw new ApiError(httpStatus.NOT_FOUND, 'Data not found');
     }
-    let body = req.body
+    let body = req.body;
     delete body['id']
     Object.assign(destinationSection, body);
     await destinationSection.save();
