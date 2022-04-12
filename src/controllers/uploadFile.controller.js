@@ -19,7 +19,7 @@ const uploadImage = catchAsync(async (req, res) => {
       if(err){
          throw new ApiError(httpStatus.BAD_REQUEST, 'File Upload Failed');
       }else{
-         const fileUrl = `http://138.68.163.128:3001/${filePAth}`
+         const fileUrl = `http://138.68.163.128:3000/${filePAth}`
          res.status(200).json({
             msg : "file uploaded",
             url : fileUrl
