@@ -38,11 +38,10 @@ const mongoose = require('mongoose');
  * @param {{string}} name
  * @returns {Promise<Destination>}
  */
-   const getDestinationSectionsFromName = async (name) => {
+  const getDestinationSectionsFromName = async (name) => {
     //return Destination.findOne({title:name});
     return await Section.find({destination:name});
   };
-
 
 
 /**
