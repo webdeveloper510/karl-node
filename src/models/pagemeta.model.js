@@ -11,7 +11,12 @@ const pageMetaSchema = mongoose.Schema(
     },
     canonical:{
       type:String
-    }
+    },
+    homePage:{
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: 'HomePage',
+      required: false,
+  }
   },
   {
     timestamps: true,

@@ -5,7 +5,6 @@ const catchAsync = require('../utils/catchAsync');
 const { homePageService } = require('../services');
 
 
-
 const listHomePageSections = catchAsync(async (req, res) => {
   const homepageSections = await homePageService.listHomePageSections();
   res.status(httpStatus.CREATED).send(homepageSections);
@@ -21,9 +20,9 @@ const getHomePageSection = catchAsync(async (req, res) => {
 });
 
 const createHomePageSection = catchAsync(async (req, res) => {
-    const homepage = await homePageService.createHomePageSection(req.body);
-    res.status(httpStatus.CREATED).send(homepage);
-  });
+  const homepage = await homePageService.createHomePageSection(req.body);
+  res.status(httpStatus.CREATED).send(homepage);
+});
 
 
 

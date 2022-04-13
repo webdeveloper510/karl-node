@@ -26,23 +26,22 @@ module.exports = router;
  *           schema:
  *             type: object
  *             required:
- *               - metatitle
- *               - metadescription
+ *               - metaTitle
+ *               - metaDescription
  *               - canonical
  *               - type
  *             properties:
- *               metatitle:
+ *               metaTitle:
  *                 type: string
- *               metadescription:
+ *               metaDescription:
  *                 type: string
  *               type:
  *                 type: string
  *               canonical:
  *                 type: string
  *             example:
- *               metatitle: Hello Holidays
- *               type: homepage
- *               metadescription: Save up to £750 per person on selected holidays to Greece, Spain, Portugal & Italy
+ *               metaTitle: Hello Holidays
+ *               metaDescription: Save up to £750 per person on selected holidays to Greece, Spain, Portugal & Italy
  *               canonical: Save up to £750 per person on selected holidays to Greece, Spain, Portugal & Italy
  *     responses:
  *       "201":
@@ -54,7 +53,6 @@ module.exports = router;
  *       "403":
  *         $ref: '#/components/responses/Forbidden'
  */
-
 
 /**
  * @swagger
@@ -72,15 +70,15 @@ module.exports = router;
  *           schema:
  *             type: object
  *             required:
- *               - metatitle
- *               - metadescription
+ *               - metaTitle
+ *               - metaDescription
  *               - canonical
  *               - type
  *               - id
  *             properties:
- *               metatitle:
+ *               metaTitle:
  *                 type: string
- *               metadescription:
+ *               metaDescription:
  *                 type: string
  *               type:
  *                 type: string
@@ -90,13 +88,12 @@ module.exports = router;
  *                 type: string
  *             example:
  *               id: 345345345345345345
- *               metatitle: Hello Holidays
- *               type: homepage
- *               metadescription: Save up to £750 per person on selected holidays to Greece, Spain, Portugal & Italy
+ *               metaTitle: Hello Holidays
+ *               metaDescription: Save up to £750 per person on selected holidays to Greece, Spain, Portugal & Italy
  *               canonical: Save up to £750 per person on selected holidays to Greece, Spain, Portugal & Italy
  *     responses:
  *       "201":
- *         description: Created
+ *         description: Updated
  *         content:
  *           application/json:
  *             schema:

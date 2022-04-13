@@ -1,7 +1,6 @@
 const httpStatus = require('http-status');
 const ApiError = require('../utils/ApiError');
-const { PageMeta } = require('../models');
-
+const { PageMeta, HomePage } = require('../models');
 
 const getPageMetaById = async (id) => {
   return await PageMeta.findById(id);
@@ -14,7 +13,7 @@ const getPageMetaById = async (id) => {
  * @returns {Promise<PageMeta>}
  */
   const getPageMeta = async (type) => {
-    return PageMeta.findOne({type});
+    return await PageMeta.findOne({type});
   };
 
 
@@ -23,7 +22,7 @@ const getPageMetaById = async (id) => {
  * @param {{string}} type
  * @returns {Promise<PageMeta>}
  */
- const listPageMeta = async () => {
+  const listPageMeta = async () => {
   return await PageMeta.find({});
 };
 
@@ -37,6 +36,7 @@ const getPageMetaById = async (id) => {
     // if (await User.isEmailTaken(userBody.email)) {
     //   throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
     // }
+    // const dataFile = await PageMeta.create(PageMetaBody);
     return await PageMeta.create(PageMetaBody);
   };
 
@@ -45,12 +45,12 @@ const getPageMetaById = async (id) => {
  * Update Page Meta based on id
  * @returns {Promise<PageMeta>}
  */
-   const updatePageMeta = async (req) => {  
+   const updatePageMeta = async (req) => {
     const pagemeta = await getPageMetaById(req.body.id);
     if (!pagemeta) {
       throw new ApiError(httpStatus.NOT_FOUND, 'Data not found');
     }
-    let body = req.body
+    let body = req.body;
     delete body['id']
     Object.assign(pagemeta, body);
     await pagemeta.save();

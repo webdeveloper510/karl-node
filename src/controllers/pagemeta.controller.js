@@ -23,9 +23,8 @@ const listPageMeta = catchAsync(async (req, res) => {
 
 const createPageMeta = catchAsync(async (req, res) => {
   const pageMeta = await pageMetaService.createPageMeta(req.body);
-  console.log(pageMeta)
   res.status(httpStatus.CREATED).send(pageMeta);
-  });
+});
 
 const updatePageMeta = catchAsync(async (req, res) => {
   const pageMeta = await pageMetaService.updatePageMeta(req);

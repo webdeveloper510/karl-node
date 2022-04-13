@@ -12,7 +12,7 @@ const getDestinationList = catchAsync(async (req, res) => {
   } else {
     filter = {}
   }
-  const destinations = await destinationService.getDestinationList(filter); 
+  const destinations = await destinationService.getDestinationList(filter);
   if (!destinations) {
     throw new ApiError(httpStatus.NOT_FOUND, 'No destination found');
   }
@@ -20,8 +20,9 @@ const getDestinationList = catchAsync(async (req, res) => {
 });
 
 const getDestination = catchAsync(async (req, res) => {
-    const destination = await destinationService.getDestinationById(req.params.id);
-    console.log(destination)
+    let destination = await destinationService.getDestinationById(req.params.id);
+    // const newSlides = destination.slides.filter(dest => dest !== '');
+    // console.log(newSlides)
     if (!destination) {
       throw new ApiError(httpStatus.NOT_FOUND, 'Destination not found');
     }
@@ -29,13 +30,12 @@ const getDestination = catchAsync(async (req, res) => {
 });
 
 const getDestinationByName = catchAsync(async (req,res)=> {
-  console.log("here")
   const destination = await destinationService.getDestinationByName(req.params.name);
     if (!destination) {
       throw new ApiError(httpStatus.NOT_FOUND, 'Destination not found');
     }
     res.send(destination);
-})
+});
 
 const createDestination = catchAsync(async (req, res) => {
     const destination = await destinationService.createDestination(req.body);
