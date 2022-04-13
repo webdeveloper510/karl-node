@@ -40,6 +40,7 @@ module.exports = router;
  *               canonical:
  *                 type: string
  *             example:
+ *               type: homepage
  *               metaTitle: Hello Holidays
  *               metaDescription: Save up to £750 per person on selected holidays to Greece, Spain, Portugal & Italy
  *               canonical: Save up to £750 per person on selected holidays to Greece, Spain, Portugal & Italy
