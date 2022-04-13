@@ -5,7 +5,7 @@ const catchAsync = require('../utils/catchAsync');
 const { userService } = require('../services');
 
 const createUser = catchAsync(async (req, res) => {
-  console.log(1)
+  console.log('create')
   const user = await userService.createUser(req.body);
   res.status(httpStatus.CREATED).send(user);
 });
@@ -26,9 +26,9 @@ const getUser = catchAsync(async (req, res) => {
 });
 
 const updateUser = catchAsync(async (req, res) => {
-  console.log(1)
-  // const user = await userService.updateUserById(req.body.userId, req.body);
-  // res.send(user);
+  console.log(req.body)
+  const user = await userService.updateUserById(req.body.userId, req.body);
+  res.send(user);
 });
 
 const deleteUser = catchAsync(async (req, res) => {
