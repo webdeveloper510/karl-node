@@ -42,11 +42,11 @@ const getPageMetaById = async (id) => {
  */
    const updatePageMeta = async (req) => {
      const pageMeta = await PageMeta.findOneAndUpdate({type : req.body.type}, req.body, {new : true, useFindAndModify: false})
-     console.log(pageMeta)
      if (!pageMeta) {
-       throw new ApiError(httpStatus.NOT_FOUND, 'Data not found');
-      }
-      return pageMeta;
+      throw new ApiError(httpStatus.NOT_FOUND, 'Data not found');
+     }
+    return pageMeta;
+
     // Object.assign(pageMeta, req.body);
     // await pageMeta.save();
   };
