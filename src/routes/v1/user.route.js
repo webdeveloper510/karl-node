@@ -5,14 +5,15 @@ const userValidation = require('../../validations/user.validation');
 const userController = require('../../controllers/user.controller');
 const router = express.Router();
 
+// auth('manageUsers'), 
+// validate(userValidation.updateUser), 
+router.route('/update').post(validate(userValidation.updateUser), userController.updateUser);
+
 router.route('/')
 // auth('manageUsers'),
 .post(validate(userValidation.createUser), userController.createUser)
 // auth('getUsers'), 
 .get(validate(userValidation.getUsers), userController.getUsers);
-// auth('manageUsers'), 
-// validate(userValidation.updateUser), 
-router.route('/update').post(validate(userValidation.updateUser), userController.updateUser);
 
 router
 .route('/:userId')
@@ -173,7 +174,7 @@ module.exports = router;
  *               - title
  *               - id                                                  
  *             properties:
- *               id:
+ *               userId:
  *                 type: string
  *               name:
  *                 type: string
@@ -187,7 +188,7 @@ module.exports = router;
  *                 minLength: 8
  *                 description: At least one number and one letter
  *             example:
- *               id: 6240d9343dfg434748
+ *               userId: 6240d9343dfg434748
  *               name: fake name
  *               email: fake@example.com
  *               password: password1
