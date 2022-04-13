@@ -49,7 +49,6 @@ const updateDestination = catchAsync(async (req, res) => {
 
 const createDestinationSection = catchAsync(async (req, res) => {
   const destinationSection = await destinationService.createDestinationSection(req.body);
-  // console.log(destinationSection)
   res.status(httpStatus.CREATED).send(destinationSection);
 });
 
