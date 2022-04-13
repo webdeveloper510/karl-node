@@ -88,6 +88,7 @@ const getDestinationMeta = catchAsync(async (req, res) => {
 })
 
 const getAllDestinationMeta = catchAsync(async (req, res) => {
+  console.log(1)
   const destinationMeta = await destinationService.getAllDestinationMeta(req);
   res.status(httpStatus.CREATED).send(destinationMeta);
 })
