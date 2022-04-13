@@ -5,6 +5,9 @@ const destinationController = require('../../controllers/destination.controller'
 const auth = require('../../middlewares/auth');
 const router = express.Router();
 
+router.route('/addsection').post(destinationController.createDestinationSection);
+router.route('/create').post(destinationController.createDestination);
+router.route('/updateSection').post(destinationController.updateDestinationSection);
 router.route('/update').post(destinationController.updateDestination);
 router.route('/destinationListMeta').get(destinationController.getAllDestinationMeta);
 router.route('/list').get(destinationController.getDestinationList);
@@ -13,9 +16,7 @@ router.route('/name/:name').get(destinationController.getDestinationByName);
 router.route('/:id/sections').get(destinationController.getDestinationSections);
 router.route('/:name/sectionsByName').get(destinationController.getDestinationSectionsFromName);
 router.route('/section/:sectionId').get(destinationController.getDestinationSection);
-router.route('/addsection').post(destinationController.createDestinationSection);
-router.route('/create').post(destinationController.createDestination);
-router.route('/updateSection').post(destinationController.updateDestinationSection);
+
 // router.route('/update').post(destinationController.updateDestination);
 router.route('/destinationMeta/:id').get(destinationController.getDestinationMeta);
 // router.get('/section2', homepageController.getSection2);
