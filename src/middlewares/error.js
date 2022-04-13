@@ -5,6 +5,7 @@ const logger = require('../config/logger');
 const ApiError = require('../utils/ApiError');
 
 const errorConverter = (err, req, res, next) => {
+  console.log(err)
   let error = err;
   if (!(error instanceof ApiError)) {
     const statusCode =
@@ -17,6 +18,8 @@ const errorConverter = (err, req, res, next) => {
 
 // eslint-disable-next-line no-unused-vars
 const errorHandler = (err, req, res, next) => {
+  console.log(err)
+
   let { statusCode, message } = err;
   if (config.env === 'production' && !err.isOperational) {
     statusCode = httpStatus.INTERNAL_SERVER_ERROR;

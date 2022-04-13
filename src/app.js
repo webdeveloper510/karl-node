@@ -30,7 +30,7 @@ app.use(helmet());
 app.use(fileUplaod());
 
 // parse json request body
-app.use(express.json({limit: '50mb'}));
+app.use(express.json({limit: '100mb'}));
 
 // parse urlencoded request body
 app.use(express.urlencoded({ extended: true }));
