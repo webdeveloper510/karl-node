@@ -49,8 +49,8 @@ const updateDestination = catchAsync(async (req, res) => {
 
 const createDestinationSection = catchAsync(async (req, res) => {
   console.log('yes i am ');
-  const destinationSection = await destinationService.createDestinationSection(req.body);
-  res.status(httpStatus.CREATED).send(destinationSection);
+  //const destinationSection = await destinationService.createDestinationSection(req.body);
+  // res.status(httpStatus.CREATED).send(destinationSection);
 });
 
 const getDestinationSections = catchAsync(async (req, res) => {
