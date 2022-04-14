@@ -17,7 +17,7 @@ router.route('/:id/sections').get(destinationController.getDestinationSections);
 router.route('/:name/sectionsByName').get(destinationController.getDestinationSectionsFromName);
 router.route('/section/:sectionId').get(destinationController.getDestinationSection);
 router.route('/destinationMeta/:id').get(destinationController.getDestinationMeta);
-router.route('/deleteDestinationSection').delete(destinationController.deleteDestinationSection);
+router.route('/deleteDestinationSection/:destinationId/:sectionId').delete(destinationController.deleteDestinationSection);
 // router.get('/section2', homepageController.getSection2);
 // router.get('/section3', homepageController.getSection3);
 
