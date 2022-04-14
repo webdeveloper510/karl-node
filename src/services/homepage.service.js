@@ -63,8 +63,8 @@ const showHomePageHoliday = async (req) => {
   return await Holiday.find({shownOnDashboard : shownOnDashboard});
 }
 
-const deleteHomePageSection = async (homeId) => {
-  return await HomePage.findByIdAndDelete({_id : homeId});
+const deleteHomePageSection = async (sectionId) => {
+  return await HomePage.findByIdAndDelete({_id : sectionId});
 }
 
 // const deleteHomePageSubSection = async (homeId, sectionId) => {
