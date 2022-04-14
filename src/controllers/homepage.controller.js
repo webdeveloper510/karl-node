@@ -46,14 +46,6 @@ const deleteHomePageSection = catchAsync(async (req, res) => {
   });
 });
 
-// const deleteHomePageSubSection = catchAsync(async (req, res) => {
-//   await homePageService.deleteHomePageSubSection(req.body.homeId, req.body.sectionId);
-//   res.status(httpStatus.CREATED).json({
-//     msg : "successfully deleted homepage sub-section",
-//     success : true
-//   });
-// })
-
 
 module.exports = {
   listHomePageSections,
@@ -63,5 +55,5 @@ module.exports = {
   showHomePageDestionation,
   showHomePageHolidays,
   deleteHomePageSection
-  };
+};
   

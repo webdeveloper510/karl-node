@@ -67,11 +67,6 @@ const deleteHomePageSection = async (sectionId) => {
   return await HomePage.findByIdAndDelete({_id : sectionId});
 }
 
-// const deleteHomePageSubSection = async (homeId, sectionId) => {
-//   return await HomePage.updateOne({_id: homeId},{$pull: {"sections": {_id: sectionId}}}, {new : true});
-// }
-
-
 module.exports = {
   listHomePageSections,
   getHomePageSectionById,
