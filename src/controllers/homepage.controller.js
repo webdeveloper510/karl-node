@@ -39,7 +39,7 @@ const showHomePageHolidays = catchAsync(async (req, res) => {
 });
 
 const deleteHomePageSection = catchAsync(async (req, res) => {
-  await homePageService.deleteHomePageSection(req.body.sectionId);
+  await homePageService.deleteHomePageSection(req.params.sectionId);
   res.status(httpStatus.CREATED).json({
     msg : "successfully deleted homepage section",
     success : true

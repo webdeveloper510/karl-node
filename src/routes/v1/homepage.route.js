@@ -11,7 +11,7 @@ router.route('/destinations').post(homepageController.showHomePageDestionation);
 router.route('/holidays').post(homepageController.showHomePageHolidays);
 router.route('/sections').get(homepageController.listHomePageSections);
 router.route('/section/:id').get(homepageController.getHomePageSection);
-router.route('/deleteHomePageSection').delete(homepageController.deleteHomePageSection);
+router.route('/deleteHomePageSection/:sectionId').delete(homepageController.deleteHomePageSection);
 // router.route('/deleteHomePageSubSection').delete(homepageController.deleteHomePageSubSection);
 // router.get('/section2', homepageController.getSection2);
 // router.get('/section3', homepageController.getSection3);
