@@ -134,7 +134,13 @@ const getAllDestinationMeta = async () => {
 }
 
 const deleteDestinationSection = async (destinationId, sectionId) => {
-  return await Section.updateOne({_id: destinationId},{$pull: {"sections": {_id: sectionId}}}, {new : true});
+  const data = await Destination.findById(destinationId)
+  console.log(data.sections)
+  // console.log(data.slides)
+  // console.log(data)
+  // await Destination.update({_id: "623afc5075f4e644bc69fb24"},{"$pull" : {"sections" : { "key" : 0}}},false,false)
+  // const data =  await Destination.updateOne({_id: "623afc5075f4e644bc69fb24"},{ $pull: { "sections": {_id: "623afc5075f4e644bc69fb25" } } });
+  // return await Section.updateOne({_id: destinationId},{$pull: {"sections": {_id: sectionId}}}, {new : true});
 }
 
 module.exports = {
