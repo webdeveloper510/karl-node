@@ -34,7 +34,8 @@ app.use(express.json({limit: '100mb'}));
 
 // parse urlencoded request body
 app.use(express.urlencoded({ extended: true }));
-// console.log(process.cwd())
+
+// serve image upload path.
 app.use('/uploads', express.static(process.cwd() + '/uploads'));
 
 // sanitize request data

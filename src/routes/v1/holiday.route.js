@@ -17,9 +17,9 @@ router.route('/create').post(holidayController.createHoliday);
 router.route('/update').post(holidayController.updateHoliday);
 router.route('/updateSection').post(holidayController.updateHolidaySection);
 router.route('/holidayMeta/:id').get(holidayController.getHolidayMeta);
+router.route('/deleteHolidaySection').delete(holidayController.deleteHolidaySection);
 // router.get('/section2', homepageController.getSection2);
 // router.get('/section3', homepageController.getSection3);
-
 
 module.exports = router;
 

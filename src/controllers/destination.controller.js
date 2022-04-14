@@ -48,7 +48,6 @@ const updateDestination = catchAsync(async (req, res) => {
 });
 
 const createDestinationSection = catchAsync(async (req, res) => {
-  console.log('yes i am ');
   const destinationSection = await destinationService.createDestinationSection(req.body);
   res.status(httpStatus.CREATED).send(destinationSection);
 });
@@ -88,9 +87,16 @@ const getDestinationMeta = catchAsync(async (req, res) => {
 })
 
 const getAllDestinationMeta = catchAsync(async (req, res) => {
-  console.log(1)
   const destinationMeta = await destinationService.getAllDestinationMeta(req);
   res.status(httpStatus.CREATED).send(destinationMeta);
+})
+
+const deleteDestinationSection = catchAsync(async (req, res) => {
+  await destinationService.deleteDestinationSection(req.body.destinationId, req.body.sectionId);
+  res.status(httpStatus.CREATED).json({
+    msg : "successfully deleted section",
+    success : true
+  }); 
 })
 
 
@@ -106,6 +112,7 @@ module.exports = {
     getDestinationSection,
     updateDestinationSection,
     getDestinationMeta,
-    getAllDestinationMeta
+    getAllDestinationMeta,
+    deleteDestinationSection
   };
   

@@ -31,6 +31,7 @@ const updatePageMeta = catchAsync(async (req, res) => {
   res.status(httpStatus.CREATED).send(pageMeta);
 });
 
+
 module.exports = {
   createPageMeta,
   getPageMeta,

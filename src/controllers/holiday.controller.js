@@ -13,7 +13,6 @@ const getHolidayList = catchAsync(async (req, res) => {
   res.send(holidays);
 });
 
-
 const getHoliday = catchAsync(async (req, res) => {
     const holiday = await holidayService.getHolidayById(req.params.id);
     if (!holiday) {
@@ -21,7 +20,6 @@ const getHoliday = catchAsync(async (req, res) => {
     }
     res.send(holiday);
 });
-
 
 const getHolidayByName = catchAsync(async (req,res) => {
   console.log("here")
@@ -32,24 +30,20 @@ const getHolidayByName = catchAsync(async (req,res) => {
     res.send(holiday);
 })
 
-
 const createHoliday = catchAsync(async (req, res) => {
     const holiday = await holidayService.createHoliday(req.body);
     res.status(httpStatus.CREATED).send(holiday);
 });
-
 
 const updateHoliday = catchAsync(async (req, res) => {
   const holiday = await holidayService.updateHoliday(req);
   res.status(httpStatus.CREATED).send(holiday);
 });
 
-
 const createHolidaySection = catchAsync(async (req, res) => {
   const holidaySection = await holidayService.createHolidaySection(req.body);
   res.status(httpStatus.CREATED).send(holidaySection);
 });
-
 
 const getHolidaySections = catchAsync(async (req, res) => {
   const holidaySections = await holidayService.getHolidaySections(req.params.id);
@@ -59,7 +53,6 @@ const getHolidaySections = catchAsync(async (req, res) => {
   res.send(holidaySections);
 });
 
-
 const getHolidaySectionsFromName = catchAsync(async (req, res) => {
   const holidaySections = await holidayService.getHolidaySectionsFromName(req.params.name);
   if (!holidaySections) {
@@ -68,7 +61,6 @@ const getHolidaySectionsFromName = catchAsync(async (req, res) => {
   res.send(holidaySections);
 });
 
-
 const getHolidaySection = catchAsync(async (req, res) => {
   const holidaySection = await holidayService.getHolidaySection(req.params.sectionId);
   if (!holidaySection) {
@@ -76,7 +68,6 @@ const getHolidaySection = catchAsync(async (req, res) => {
   }
   res.send(holidaySection);
 });
-
 
 const updateHolidaySection = catchAsync(async (req, res) => {
   const holidaySection = await holidayService.updateHolidaySection(req);
@@ -93,6 +84,14 @@ const getAllHolidaysMeta =  catchAsync(async (req, res) => {
   res.status(httpStatus.CREATED).send(holidayMeta);
 });
 
+const deleteHolidaySection = catchAsync(async (req, res) => {
+  await holidayService.deleteHolidaySection(req.body.holidayId, req.body.sectionId);
+  res.status(httpStatus.CREATED).json({
+    msg : "successfully deleted section",
+    success : true
+  }); 
+})
+
 
 module.exports = {
     getHolidayList,
@@ -106,6 +105,7 @@ module.exports = {
     getHolidaySection,
     updateHolidaySection,
     getHolidayMeta,
-    getAllHolidaysMeta
+    getAllHolidaysMeta,
+    deleteHolidaySection
 };
   

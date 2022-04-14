@@ -5,15 +5,15 @@ const homepageController = require('../../controllers/homepage.controller');
 const auth = require('../../middlewares/auth');
 const router = express.Router();
 
-router.route('/sections').get(homepageController.listHomePageSections);
-router.route('/section/:id').get(homepageController.getHomePageSection);
 router.route('/createSection').post(homepageController.createHomePageSection);
 router.route('/updateSection').post(homepageController.updateHomePageSection);
 router.route('/destinations').post(homepageController.showHomePageDestionation);
 router.route('/holidays').post(homepageController.showHomePageHolidays);
+router.route('/sections').get(homepageController.listHomePageSections);
+router.route('/section/:id').get(homepageController.getHomePageSection);
+router.route('/deleteHomePageSection').delete(homepageController.deleteHomePageSection);
 // router.get('/section2', homepageController.getSection2);
 // router.get('/section3', homepageController.getSection3);
-
 
 module.exports = router;
 

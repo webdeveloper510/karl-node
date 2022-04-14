@@ -19,7 +19,6 @@ router.post('/reset-password', validate(authValidation.resetPassword));
 // , authController.verifyEmail
 router.post('/verify-email', validate(authValidation.verifyEmail));
 
-
 module.exports = router;
 
 /**

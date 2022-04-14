@@ -10,7 +10,6 @@ const listHomePageSections = catchAsync(async (req, res) => {
   res.status(httpStatus.CREATED).send(homepageSections);
 });
 
-
 const getHomePageSection = catchAsync(async (req, res) => {
     const homepage = await homePageService.getHomePageSectionById(req.params.id);
     if (!homepage) {
@@ -24,13 +23,10 @@ const createHomePageSection = catchAsync(async (req, res) => {
   res.status(httpStatus.CREATED).send(homepage);
 });
 
-
-
 const updateHomePageSection = catchAsync(async (req, res) => {
   const homepage = await homePageService.updateHomePageSection(req);
   res.status(httpStatus.CREATED).send(homepage);
 });
-
 
 const showHomePageDestionation = catchAsync(async (req, res) => {
   const homePageDestinations = await homePageService.showHomePageDestionation(req);
@@ -42,6 +38,14 @@ const showHomePageHolidays = catchAsync(async (req, res) => {
   res.status(httpStatus.CREATED).send(homePageHolidays);
 });
 
+const deleteHomePageSection = catchAsync(async (req, res) => {
+  await homePageService.deleteHomePageSection(req.body.homeId, req.body.sectionId);
+  res.status(httpStatus.CREATED).json({
+    msg : "successfully deleted section",
+    success : true
+  });
+})
+
 
 module.exports = {
   listHomePageSections,
@@ -49,6 +53,7 @@ module.exports = {
   createHomePageSection,
   updateHomePageSection,
   showHomePageDestionation,
-  showHomePageHolidays
+  showHomePageHolidays,
+  deleteHomePageSection
   };
   

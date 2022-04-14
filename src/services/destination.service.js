@@ -133,6 +133,10 @@ const getAllDestinationMeta = async () => {
   return await Destination.find({}).select('metaTitle metaDescription canonical');
 }
 
+const deleteDestinationSection = async (destinationId, sectionId) => {
+  return await Section.updateOne({_id: destinationId},{$pull: {"sections": {_id: sectionId}}}, {new : true})
+}
+
 
 module.exports = {
   getDestinationList,
@@ -146,5 +150,6 @@ module.exports = {
   getDestinationSection,
   updateDestinationSection,
   getDestinationMeta,
-  getAllDestinationMeta
+  getAllDestinationMeta,
+  deleteDestinationSection
 };

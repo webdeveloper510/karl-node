@@ -21,7 +21,6 @@ const subsectionsSchema = {
         },
 };
 
-
 const sectionsSchema = mongoose.Schema(
     {
         title: {
