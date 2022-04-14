@@ -17,7 +17,8 @@ router.route('/create').post(holidayController.createHoliday);
 router.route('/update').post(holidayController.updateHoliday);
 router.route('/updateSection').post(holidayController.updateHolidaySection);
 router.route('/holidayMeta/:id').get(holidayController.getHolidayMeta);
-router.route('/deleteHolidaySection').delete(holidayController.deleteHolidaySection);
+router.route('/deleteHomePageSection').delete(holidayController.deleteHolidaySection);
+// router.route('/deleteHolidaySubSection').delete(holidayController.deleteHolidaySubSection);
 // router.get('/section2', homepageController.getSection2);
 // router.get('/section3', homepageController.getSection3);
 

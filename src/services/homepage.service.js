@@ -63,9 +63,13 @@ const showHomePageHoliday = async (req) => {
   return await Holiday.find({shownOnDashboard : shownOnDashboard});
 }
 
-const deleteHomePageSection = async (homeId, sectionId) => {
-  return await HomePage.updateOne({_id: homeId},{$pull: {"sections": {_id: sectionId}}}, {new : true});
+const deleteHomePageSection = async (homeId) => {
+  return await HomePage.findByIdAndDelete({_id : homeId});
 }
+
+// const deleteHomePageSubSection = async (homeId, sectionId) => {
+//   return await HomePage.updateOne({_id: homeId},{$pull: {"sections": {_id: sectionId}}}, {new : true});
+// }
 
 
 module.exports = {

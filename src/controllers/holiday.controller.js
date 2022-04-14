@@ -85,12 +85,20 @@ const getAllHolidaysMeta =  catchAsync(async (req, res) => {
 });
 
 const deleteHolidaySection = catchAsync(async (req, res) => {
-  await holidayService.deleteHolidaySection(req.body.holidayId, req.body.sectionId);
+  await holidayService.deleteHolidaySection(req.body.holidayId);
   res.status(httpStatus.CREATED).json({
-    msg : "successfully deleted section",
+    msg : "successfully deleted holiday section",
     success : true
-  }); 
+  });
 })
+
+// const deleteHolidaySubSection = catchAsync(async (req, res) => {
+//   await holidayService.deleteHolidaySubSection(req.body.holidayId, req.body.sectionId);
+//   res.status(httpStatus.CREATED).json({
+//     msg : "successfully deleted holiday sub-section",
+//     success : true
+//   }); 
+// })
 
 
 module.exports = {
