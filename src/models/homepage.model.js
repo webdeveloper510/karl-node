@@ -42,6 +42,10 @@ const homePageSchema = mongoose.Schema(
     description2:{
         type:String,
         required:false  
+    },
+    type:{
+      type:String,
+      required:true
     }
   },
   {
