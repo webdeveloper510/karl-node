@@ -3,7 +3,6 @@ const { Destination, Section } = require('../models');
 const ApiError = require('../utils/ApiError');
 const mongoose = require('mongoose');
 
-
 /**
  * Get section by type
  * @param {{string}} id
@@ -134,13 +133,7 @@ const getAllDestinationMeta = async () => {
 }
 
 const deleteDestinationSection = async (destinationId, sectionId) => {
-  return await Section.updateOne({destination :destinationId}, {$pull: {sections: {_id: sectionId}}}, {new : true});
-  // const data = await Section.findById({_id : sectionId})
-  // console.log(data.sections)
-  // const data = await Destination.update({_id: sectionId},{"$pull" : {"sections" : { "key" : 0}}})
-  // console.log(data)
-  // const data = await Section.findById(destinationId)
-  // console.log(data)
+  return await Section.findByIdAndDelete({_id : sectionId});
 }
 
 module.exports = {

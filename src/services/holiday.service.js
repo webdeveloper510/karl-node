@@ -131,7 +131,7 @@ const getAllHolidaysMeta = async () => {
 }
 
 const deleteHolidaySection = async (holidayId, sectionId) => {
-  return await HolidaySection.updateOne({holiday : holidayId}, {$pull: {sections: {_id: sectionId}}}, {new : true});
+  return await HolidaySection.findByIdAndDelete({_id : holidayId});
 }
 
   
