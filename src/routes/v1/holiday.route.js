@@ -17,8 +17,7 @@ router.route('/create').post(holidayController.createHoliday);
 router.route('/update').post(holidayController.updateHoliday);
 router.route('/updateSection').post(holidayController.updateHolidaySection);
 router.route('/holidayMeta/:id').get(holidayController.getHolidayMeta);
-router.route('/deleteHomePageSection').delete(holidayController.deleteHolidaySection);
-// router.route('/deleteHolidaySubSection').delete(holidayController.deleteHolidaySubSection);
+router.route('/deleteHolidaySection/:holidayId/:sectionId').delete(holidayController.deleteHolidaySection);
 // router.get('/section2', homepageController.getSection2);
 // router.get('/section3', homepageController.getSection3);
 
@@ -104,7 +103,7 @@ module.exports = router;
  *                 type: string
  *               type:
  *                 type: string
- *               destination:
+ *               holiday:
  *                 type: string
  *               sections:
  *                 type: array
@@ -115,7 +114,7 @@ module.exports = router;
  *               image: url
  *               percentage: 50
  *               type: testing
- *               destination: 45345345345
+ *               holiday: 45345345345
  *               sections: [{title,description,image,percentage,type}]
  *     responses:
  *       "201":

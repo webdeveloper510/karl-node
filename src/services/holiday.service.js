@@ -130,13 +130,10 @@ const getAllHolidaysMeta = async () => {
   return await Holiday.find({}).select('metaTitle metaDescription canonical');
 }
 
-const deleteHolidaySection = async (holidayId) => {
-  return await HolidaySection.findByIdAndDelete({_id : holidayId});
+const deleteHolidaySection = async (holidayId, sectionId) => {
+  return await HolidaySection.updateOne({holiday : holidayId}, {$pull: {sections: {_id: sectionId}}}, {new : true});
 }
 
-// const deleteHolidaySubSection = async(holidayId, sectionId) => {
-//   return await HolidaySection.updateOne({_id: holidayId},{$pull: {"sections": {_id: sectionId}}}, {new : true})
-// }
   
 module.exports = {
   getHolidayList,

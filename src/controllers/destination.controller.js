@@ -92,12 +92,11 @@ const getAllDestinationMeta = catchAsync(async (req, res) => {
 });
 
 const deleteDestinationSection = catchAsync(async (req, res) => {
-  const data = await destinationService.deleteDestinationSection(req.params.destinationId, req.params.sectionId);
-  // console.log(data)
-  // res.status(httpStatus.CREATED).json({
-  //   msg : "successfully deleted destination section",
-  //   success : true
-  // }); 
+  await destinationService.deleteDestinationSection(req.params.destinationId, req.params.sectionId);
+  res.status(httpStatus.CREATED).json({
+    msg : "successfully deleted section",
+    success : true
+  }); 
 });
 
 module.exports = {
