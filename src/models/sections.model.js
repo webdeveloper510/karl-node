@@ -38,10 +38,6 @@ const sectionsSchema = mongoose.Schema(
         percentage:{
             type:Number
         },
-        // type: {
-        //   type: String,
-        //   required: false,
-        // },
         destination:{
             type: mongoose.SchemaTypes.ObjectId,
             ref: 'Destinations',
@@ -50,6 +46,10 @@ const sectionsSchema = mongoose.Schema(
         sections:{
             type:[subsectionsSchema],
             required:false  
+        },
+        type: {
+            type: String,
+            required: false,
         }
     }
 );

@@ -28,7 +28,7 @@ const holidaySchema = mongoose.Schema(
     shownOnDashboard : {
       type : Boolean,
       default : false
-    }   
+    }
       
   },
   {
