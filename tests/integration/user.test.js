@@ -153,7 +153,7 @@ describe('User routes', () => {
       expect(res.body).toEqual({
         results: expect.any(Array),
         page: 1,
-        limit: 10,
+        limit: 1000000,
         totalPages: 1,
         totalResults: 3,
       });
