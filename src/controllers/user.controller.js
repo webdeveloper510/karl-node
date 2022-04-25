@@ -33,7 +33,7 @@ const updateUser = catchAsync(async (req, res) => {
 
 const deleteUser = catchAsync(async (req, res) => {
   await userService.deleteUserById(req.params.userId);
-  res.status(httpStatus.NO_CONTENT).json({msg : "successfully deleted", success : true});
+  res.status(httpStatus.OK).json({msg : "successfully deleted", success : true});
 });
 
 module.exports = {
