@@ -153,7 +153,7 @@ describe('User routes', () => {
       expect(res.body).toEqual({
         results: expect.any(Array),
         page: 1,
-        limit: 1000000,
+        limit: 10,
         totalPages: 1,
         totalResults: 3,
       });
@@ -194,7 +194,11 @@ describe('User routes', () => {
         .expect(httpStatus.OK);
 
       expect(res.body).toEqual({
-        results: expect.any(Array)
+        results: expect.any(Array),
+        page: 1,
+        limit: 10,
+        totalPages: 1,
+        totalResults: 1,
       });
       expect(res.body.results).toHaveLength(1);
       expect(res.body.results[0].id).toBe(userOne._id.toHexString());
@@ -211,7 +215,11 @@ describe('User routes', () => {
         .expect(httpStatus.OK);
 
       expect(res.body).toEqual({
-        results: expect.any(Array)
+        results: expect.any(Array),
+        page: 1,
+        limit: 10,
+        totalPages: 1,
+        totalResults: 2,
       });
       expect(res.body.results).toHaveLength(2);
       expect(res.body.results[0].id).toBe(userOne._id.toHexString());
@@ -229,7 +237,11 @@ describe('User routes', () => {
         .expect(httpStatus.OK);
 
       expect(res.body).toEqual({
-        results: expect.any(Array)
+        results: expect.any(Array),
+        page: 1,
+        limit: 10,
+        totalPages: 1,
+        totalResults: 3,
       });
       expect(res.body.results).toHaveLength(3);
       expect(res.body.results[0].id).toBe(userOne._id.toHexString());
@@ -248,7 +260,11 @@ describe('User routes', () => {
         .expect(httpStatus.OK);
 
       expect(res.body).toEqual({
-        results: expect.any(Array)
+        results: expect.any(Array),
+        page: 1,
+        limit: 10,
+        totalPages: 1,
+        totalResults: 3,
       });
       expect(res.body.results).toHaveLength(3);
       expect(res.body.results[0].id).toBe(admin._id.toHexString());
@@ -267,7 +283,11 @@ describe('User routes', () => {
         .expect(httpStatus.OK);
 
       expect(res.body).toEqual({
-        results: expect.any(Array)
+        results: expect.any(Array),
+        page: 1,
+        limit: 10,
+        totalPages: 1,
+        totalResults: 3,
       });
       expect(res.body.results).toHaveLength(3);
 
