@@ -6,3 +6,4 @@ module.exports.Holiday = require('./holiday.model');
 module.exports.Section = require('./sections.model');
 module.exports.HolidaySection = require('./holidaysection.model');
 module.exports.PageMeta = require('./pagemeta.model');
+module.exports.Menus= require('./menu.model')
