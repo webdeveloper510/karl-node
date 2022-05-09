@@ -7,6 +7,7 @@ const destinationRoute = require('./destination.route');
 const holidayRoute = require('./holiday.route');
 const pageMetaRoute = require('./pagemeta.route');
 const uploadFile = require('./uploadFile.route');
+const menuPageRoute =require('./menu.route');
 const config = require('../../config/config');
 
 const router = express.Router();
@@ -43,6 +44,10 @@ const defaultRoutes = [
   {
     path: '/upload',
     route: uploadFile
+  },
+  {
+    path: '/menu',
+    route: menuPageRoute
   }
 ];
 
