@@ -49,6 +49,7 @@ const getMenuById = async (id) => {
  * @returns {Promise<Holiday>}
  */
    const updateMenu = async (req) => {
+     console.log(req.body)
     const menu = await Menus.findById(req.body.id);
     if (!menu) {
       throw new ApiError(httpStatus.NOT_FOUND, 'Data not found');
