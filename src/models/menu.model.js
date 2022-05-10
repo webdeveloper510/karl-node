@@ -6,7 +6,11 @@ const submenusSchema = {
         title: {
           type: String,
           required: false,
-        }
+        },
+        link: {
+          type: String,
+          required: false,
+      },
 };
 
 const menuSchema = mongoose.Schema(
@@ -19,10 +23,7 @@ const menuSchema = mongoose.Schema(
             type: String,
             required: false,
         },
-        link: {
-          type: String,
-          required: false,
-      },
+     
         icon: {
           type: String,
           required: false,
