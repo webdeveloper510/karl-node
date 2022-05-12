@@ -19,6 +19,14 @@ const menuSchema = mongoose.Schema(
           type: String,
           required: false,
         },
+        featuredPlace: {
+          type: String,
+          required: false,
+        },
+        featuredLink: {
+          type: String,
+          required: false,
+      },
         image: {
             type: String,
             required: false,
