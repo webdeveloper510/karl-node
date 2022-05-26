@@ -12,7 +12,7 @@ router.post('/logout', validate(authValidation.logout));
 // , authController.refreshTokens
 router.post('/refresh-tokens', validate(authValidation.refreshTokens));
 // , authController.forgotPassword
-router.post('/forgot-password', validate(authValidation.forgotPassword));
+// router.post('/forgot-password', validate(authValidation.forgotPassword));
 // , authController.resetPassword
 router.post('/reset-password', validate(authValidation.resetPassword));
 // router.post('/send-verification-email', auth(), authController.sendVerificationEmail);
